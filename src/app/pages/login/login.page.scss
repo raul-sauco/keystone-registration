@@ -1,0 +1,36 @@
+ion-content {
+  --background: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
+  --background-color: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
+}
+
+#login-form-container {
+  text-align: center;
+}
+
+form#login-form {
+  margin: auto;
+  max-width: 500px;
+
+  ion-item {
+    --background: transparent;
+  }
+
+  ion-input.login-form-input {
+    background: white;
+    border-radius: 10px;
+    padding: 0.3em !important; /* Override framework */
+    border: none;
+    margin: 1rem 0;
+    font-size: 1.6em;
+    text-align: center;
+
+    input {
+      font-size: 1.6em;
+      text-align: center;
+    }
+  }
+}
+
+#submit-login-button {
+  margin-top: 1rem;
+}

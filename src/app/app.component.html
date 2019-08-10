@@ -1,24 +1,53 @@
 <ion-app>
-  <ion-split-pane>
+
+  <ion-split-pane *ngIf="auth.authenticated">
+
     <ion-menu type="overlay">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Menu</ion-title>
+          <ion-title>{{ 'MENU' | translate | uppercase }}</ion-title>
         </ion-toolbar>
       </ion-header>
+
       <ion-content>
+
         <ion-list>
+
+          <ion-list-header>
+            {{ 'LINKS' | translate | uppercase }}
+          </ion-list-header>
+
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{ p.title | translate | uppercase }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-list-header>
+            {{ 'ME' | translate | uppercase }}
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="logout()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                {{ 'LOGOUT' | translate | uppercase }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
         </ion-list>
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
+
   </ion-split-pane>
+
+  <!-- Not logged in users can only access login page -->
+  <ion-router-outlet main *ngIf="!auth.authenticated"></ion-router-outlet>
+
 </ion-app>
