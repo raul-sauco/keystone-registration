@@ -1,0 +1,48 @@
+ion-list {
+  margin: 0 10px;
+  padding: 0;
+
+  &:first-of-type {
+    padding-top: 10px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 50px;
+  }
+}
+
+.itinerary-date-header {
+  background: linear-gradient(lighten(#2A872B, 35%), lighten(#2A872B, 20%));
+  color: #f4f4f4;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+}
+
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-top: 10px;
+  --inner-padding-bottom: 10px;
+}
+
+.itinerary-event-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .event-time-and-name {
+    font-weight: bold;
+
+    > .event-name {
+      margin-left: 0.5em;
+    }
+
+    > .event-time {
+      font-size: 0.8em;
+    }
+  }
+
+  .event-notes {
+    font-size: 0.9em;
+    white-space: normal;
+  }
+}

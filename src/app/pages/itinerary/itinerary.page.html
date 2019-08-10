@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'ITINERARY' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="tripService.ready">
+
+  <ion-list *ngFor="let itineraryDate of objectKeys(tripService.formattedItinerary)">
+
+    <ion-list-header class="itinerary-date-header">
+      {{ itineraryDate | date:'MMM d' }}
+    </ion-list-header>
+
+    <ion-item *ngFor="let event of tripService.formattedItinerary[itineraryDate]">
+
+      <div class="itinerary-event-wrapper">
+
+        <div class="event-time-and-name">
+
+          <span class="event-time event-time-start">
+            {{ event.start_time }}
+          </span>
+            <span class="event-time event-time-end" *ngIf="event.end_time">
+            - {{ event.end_time }}
+          </span>
+            <span class="event-name" *ngIf="event.name">
+            {{ event.name }}
+          </span>
+            <span class="event-name" *ngIf="!event.name">
+            {{ event.activity_type }}
+          </span>
+
+        </div>
+
+        <div class="event-notes">{{ event.notes }}</div>
+
+      </div>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

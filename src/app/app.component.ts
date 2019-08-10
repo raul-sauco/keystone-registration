@@ -21,8 +21,8 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'LIST',
-      url: '/list',
+      title: 'ITINERARY',
+      url: '/itinerary',
       icon: 'list'
     }
   ];
