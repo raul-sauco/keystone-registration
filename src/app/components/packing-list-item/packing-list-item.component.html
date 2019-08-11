@@ -1,0 +1,32 @@
+<div class="item-container">
+
+  <div class="image-container">
+    <img src="https://webapp.keystone-adventures.com/images/packlist/{{ pli.getImage() }}" />
+  </div>
+
+  <div class="text-container {{ pli.getBringClass() }}">
+
+    <h2>
+      <span class="white-square"></span>
+
+      <span class="pli-name"
+            [innerHtml]="pli.getName()">
+      </span>
+
+      <span class="pli-remarks"
+            [innerHtml]="pli.getRemarks() ? '(' + pli.getRemarks() + ')' : ''">
+      </span>
+
+      <span class="pli-quantity"
+            [innerHtml]="pli.getQuantity() !== null ? (', ' + pli.getQuantity()) : ''">
+      </span>
+
+    </h2>
+
+    <div class="description-container" [innerHtml]="pli.getDescription() | MarkdownToHtml"></div>
+
+    <footer [innerHtml]="pli.getFooter() | MarkdownToHtml "></footer>
+
+  </div>
+
+</div>

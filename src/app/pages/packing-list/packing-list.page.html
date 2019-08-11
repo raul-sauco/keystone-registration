@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'PACKING_LIST' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="tripService.trip">
+
+    <section class="pli-bring">
+
+      <header
+              class="pli-header"
+              [innerHtml]="'PACKING_LIST_HEADER' | translate | MarkdownToHtml">
+      </header>
+
+      <div *ngFor="let item of tripService.trip.getPackingListItemsBring()">
+        <packing-list-item [pli]="item"></packing-list-item>
+      </div>
+
+    </section>
+
+    <section class="pli-optional">
+
+      <header
+              class="pli-header"
+              [innerHtml]="'PACKING_LIST_HEADER_OPTIONAL' | translate | MarkdownToHtml">
+      </header>
+
+      <div *ngFor="let item of tripService.trip.getPackingListItemsOptional()">
+        <packing-list-item [pli]="item"></packing-list-item>
+      </div>
+
+    </section>
+
+    <section class="pli-not-bring">
+
+      <header
+              class="pli-header"
+              [innerHtml]="'PACKING_LIST_HEADER_DO_NOT_BRING' | translate | MarkdownToHtml">
+      </header>
+
+      <div *ngFor="let item of tripService.trip.getPackingListItemsNotBring()">
+        <packing-list-item [pli]="item"></packing-list-item>
+      </div>
+
+    </section>
+
+    <footer class="pli-footer" [innerHtml]="'PACKING_LIST_FOOTER' | translate | MarkdownToHtml"></footer>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,18 @@
+ion-content {
+  --background: #fbfae0;
+  font-family: sans-serif;
+}
+
+header.pli-header {
+  ::ng-deep {
+    h1 {
+      margin-top: 0;
+      font-size: 2em;
+      text-align: center;
+      font-weight: bold;
+    }
+    p {
+      margin: 0.4rem 0;
+    }
+  }
+}

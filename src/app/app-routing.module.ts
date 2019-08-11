@@ -19,6 +19,7 @@ const routes: Routes = [
     path: 'itinerary',
     loadChildren: () => import('./pages/itinerary/itinerary.module').then(m => m.ItineraryPageModule)
   },
+  { path: 'packing-list', loadChildren: './pages/packing-list/packing-list.module#PackingListPageModule' },
 ];
 
 @NgModule({
