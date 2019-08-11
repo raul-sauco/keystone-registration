@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from '../../services/trip/trip.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-itinerary',
@@ -12,8 +11,7 @@ export class ItineraryPage implements OnInit {
   protected objectKeys = Object.keys;
 
   constructor(
-    private tripService: TripService,
-    private translate: TranslateService,
+    private tripService: TripService
   ) { }
 
   ngOnInit() { }

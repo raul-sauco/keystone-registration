@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TripService } from '../../services/trip/trip.service';
 
 @Component({
-  selector: 'app-packing-list',
-  templateUrl: './packing-list.page.html',
-  styleUrls: ['./packing-list.page.scss'],
+  selector: 'app-guides',
+  templateUrl: './guides.page.html',
+  styleUrls: ['./guides.page.scss'],
 })
-export class PackingListPage implements OnInit {
+export class GuidesPage implements OnInit {
 
   constructor(
     private tripService: TripService

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'GUIDES' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="tripService">
+
+    <ion-item
+            class="guide-item"
+            *ngFor="let guide of tripService.trip.guides">
+
+      <ion-avatar slot="start">
+        <img src="https://webapp.keystone-adventures.com/images/users/{{ guide.img }}"
+             alt="{{ guide.name }} profile image">
+      </ion-avatar>
+
+      <div class="guide-details">
+
+        <div class="guide-name">
+          {{ guide.name }}
+        </div>
+
+        <div class="guide-bio"
+             [innerHtml]="guide.bio | MarkdownToHtml">
+        </div>
+
+      </div>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

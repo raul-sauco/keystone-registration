@@ -1,0 +1,15 @@
+.guide-details {
+  color: #666;
+  padding: 1rem 0;
+}
+
+.guide-name {
+  font-weight: bold;
+}
+
+.guide-bio {
+  font-size: 0.9rem;
+  ::ng-deep p {
+    margin: 0.3rem 0;
+  }
+}

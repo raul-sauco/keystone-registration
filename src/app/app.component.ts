@@ -29,7 +29,12 @@ export class AppComponent {
     {
       title: 'PACKING LIST',
       url: '/packing-list',
-      icon: 'cart'
+      icon: 'shirt'
+    },
+    {
+      title: 'GUIDES',
+      url: '/guides',
+      icon: 'contacts'
     }
   ];
 
