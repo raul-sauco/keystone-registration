@@ -38,9 +38,7 @@ export class TripService {
 
           // Fetch the trip info from the server, will use the user's token to authenticate
           this.fetchTrip().then(
-            res => {
-              console.log('TripProvider.fetchTrip() result: ' + res);
-            }
+            res => {}
           );
         } else {
           console.warn('TripProvider.init() could not get credentials');
@@ -53,7 +51,6 @@ export class TripService {
    * Recover the trip's details from the API
    */
   fetchTrip(): Promise<boolean> {
-    console.log('TripProvider.fetchTrip()');
 
     return new Promise<boolean>(
       (resolve) => {
@@ -143,8 +140,6 @@ export class TripService {
    * Fetch all the packing list items on the packing list for the trip.
    */
   fetchPackingListItems() {
-
-    console.log('Fetching Packing list items for trip ' + this.trip.id);
 
     // TODO temporary fix while no pagination, get 50 per page.
     const endpoint = 'trip-packing-list-items?per-page=50&expand=item&trip_id=' + this.trip.id;

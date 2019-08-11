@@ -19,17 +19,17 @@
 
       <ion-avatar slot="start">
         <img src="https://webapp.keystone-adventures.com/images/users/{{ guide.img }}"
-             alt="{{ guide.name }} profile image">
+          alt="{{ guide.name }} profile image">
       </ion-avatar>
 
       <div class="guide-details">
 
         <div class="guide-name">
-          {{ guide.name }}
+          {{ translate.currentLang.includes('zh') ? guide.nameZh : guide.name }}
         </div>
 
         <div class="guide-bio"
-             [innerHtml]="guide.bio | MarkdownToHtml">
+             [innerHtml]="(translate.currentLang.includes('zh') ? guide.bioZh : guide.bio) | MarkdownToHtml">
         </div>
 
       </div>

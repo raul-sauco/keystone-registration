@@ -34,7 +34,6 @@ export class FaqPage implements OnInit {
 
   ngOnInit() {
     this.getTranslations();
-    console.log(this.tripService.trip.questions);
   }
 
   /**
