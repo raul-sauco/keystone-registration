@@ -16,26 +16,11 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent {
 
   public appPages = [
-    {
-      title: 'HOME',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'ITINERARY',
-      url: '/itinerary',
-      icon: 'list'
-    },
-    {
-      title: 'PACKING LIST',
-      url: '/packing-list',
-      icon: 'shirt'
-    },
-    {
-      title: 'GUIDES',
-      url: '/guides',
-      icon: 'contacts'
-    }
+    {title: 'HOME', url: '/home', icon: 'home'},
+    {title: 'ITINERARY', url: '/itinerary', icon: 'list'},
+    {title: 'PACKING_LIST', url: '/packing-list', icon: 'shirt'},
+    {title: 'GUIDES', url: '/guides', icon: 'contacts'},
+    {title: 'FAQ', url: '/faq', icon: 'chatbubbles'}
   ];
 
   constructor(
@@ -100,6 +85,9 @@ export class AppComponent {
     } else {
       this.translate.use('en'); // Set your language here
     }
+
+    // todo delete the next line after tests
+    this.translate.use('zh-cmn-Hans');
 
   }
 

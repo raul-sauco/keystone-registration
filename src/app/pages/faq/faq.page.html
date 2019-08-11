@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'FAQ' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list *ngIf="tripService.trip.questions && tripService.trip.questions.length > 0">
+
+    <ion-item *ngFor="let question of tripService.trip.questions">
+
+      <div class="faq-question-wrapper">
+
+        <div class="faq-question">{{ question.question }}</div>
+
+        <ng-container *ngIf="question.answer; else noAnswer">
+
+          <div class="faq-answer" [innerHtml]="question.answer | MarkdownToHtml"></div>
+
+        </ng-container>
+
+        <ng-template #noAnswer>
+
+          <div class="faq-no-answer">
+
+            {{ ('NO_ANSWER_YET' | translate) +
+              ' (' + ('ASKED' | translate) + ' ' +
+              ((question.created_at * 1000) | date : 'mediumDate') +
+            ')' }}
+
+          </div>
+
+        </ng-template>
+
+      </div>
+
+      <!-- TODO could add fields displaying when the question was asked, answered -->
+
+    </ion-item>
+
+  </ion-list>
+
+  <div id="faq-ask-new-form-wrapper">
+
+    <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()" id="question-form">
+
+      <ion-label>
+        {{ 'SEND_A_NEW_QUESTION' | translate }}
+      </ion-label>
+
+      <ion-input type="text" id="faq-question-input" formControlName="question"
+         placeholder="{{ 'WRITE_QUESTION_HERE' | translate }}">
+      </ion-input>
+
+      <ion-button [disabled]="!questionForm.valid">
+        {{ 'SEND' | translate }}
+      </ion-button>
+
+    </form>
+
+  </div>
+
+</ion-content>

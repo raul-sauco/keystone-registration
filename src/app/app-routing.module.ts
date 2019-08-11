@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'packing-list', loadChildren: './pages/packing-list/packing-list.module#PackingListPageModule' },
   { path: 'guides', loadChildren: './pages/guides/guides.module#GuidesPageModule' },
+  { path: 'faq', loadChildren: './pages/faq/faq.module#FaqPageModule' },
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+ion-list {
+  padding-top: 0;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-top: 10px;
+  --inner-padding-bottom: 10px;
+
+  &:first-of-type {
+    --inner-padding-top: 0;
+  }
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+
+}
+
+.faq-answer ::ng-deep p {
+  margin: 0.4rem 0;
+
+  /* Do not let last 'p' margin add to 'ion-item' padding */
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.faq-no-answer {
+  color: indianred;
+}
+
+#faq-question-input {
+  box-shadow: inset 0 0 1px 3px #999999,
+  var(--ion-color-primary) 1px 1px 5px;
+}
+
+#faq-ask-new-form-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 50px;
+
+  ion-label {
+    font-size: 0.6rem;
+  }
+
+  ion-button {
+    width: 100%;
+    margin: 7px 0 0 0;
+  }
+}

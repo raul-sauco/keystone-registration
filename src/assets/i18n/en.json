@@ -34,10 +34,12 @@
   "KOSHER": "Kosher",
   "LAST_NAME": "Last Name",
   "LIABILITY_WAIVER": "Liability Waiver",
+  "LINKS": "Links",
   "LIST": "List",
   "LOGIN": "Login",
   "LOGGING_IN": "Sending your login details to the server",
   "LOGOUT": "Logout",
+  "ME": "Me",
   "MEDICAL_INFORMATION": "Medical Information",
   "MENU": "Menu",
   "NAME": "Name",
@@ -73,5 +75,7 @@
   "TRIP": "Trip",
   "TRIP_ID": "Trip Code",
   "USERNAME": "Username",
-  "WELCOME_TO_KA": "Welcome to Keystone Adventures"
+  "WELCOME_TO_KA": "Welcome to Keystone Adventures",
+  "WRITE_QUESTION_HERE": "Write your question here...",
+  "WRITE_YOUR_USER_NAME_SOMEWHERE": "Your user name is <strong>{{name}}</strong>, write it down somewhere in case you need to login in the future, via this device or a different one"
 }
