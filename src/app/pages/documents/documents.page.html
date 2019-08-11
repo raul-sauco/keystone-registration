@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'DOCUMENTS' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="tripService">
+
+    <ion-item *ngFor="let file of tripService.trip.files" class="document-item">
+
+      <ion-thumbnail slot="start">
+        <img src="https://webapp.keystone-adventures.com/res/img/fileIcons/48px/{{ getIconExtension(file.type) }}.png"
+             alt="{{ file.type }} extension icon">
+      </ion-thumbnail>
+
+      <div class="file-name">{{ file.name }}</div>
+
+      <a slot="end"
+         href="https://webapp.keystone-adventures.com/files/trips/{{ tripService.trip.id }}/{{ file.name }}.{{ file.type}}">
+
+        <ion-button fill="clear" size="large">
+          <ion-icon name="download"></ion-icon>
+        </ion-button>
+
+      </a>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

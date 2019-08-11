@@ -20,7 +20,8 @@ export class AppComponent {
     {title: 'ITINERARY', url: '/itinerary', icon: 'list'},
     {title: 'PACKING_LIST', url: '/packing-list', icon: 'shirt'},
     {title: 'GUIDES', url: '/guides', icon: 'contacts'},
-    {title: 'FAQ', url: '/faq', icon: 'chatbubbles'}
+    {title: 'FAQ', url: '/faq', icon: 'chatbubbles'},
+    {title: 'DOCUMENTS', url: '/documents', icon: 'document'}
   ];
 
   constructor(
