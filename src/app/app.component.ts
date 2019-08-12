@@ -35,27 +35,6 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.initTranslate();
-
-    // Check if we are logged in
-    this.auth.checkAuthenticated().then(
-      authenticated => {
-
-        if (authenticated) {
-
-          // User has logged in, go to home page
-          this.router.navigateByUrl('/home');
-
-        } else {
-
-          // A new registration
-          this.router.navigateByUrl('/login');
-        }
-      }
-    ).catch(
-      error => {
-        this.router.navigateByUrl('/login');
-      }
-    );
   }
 
   initializeApp() {

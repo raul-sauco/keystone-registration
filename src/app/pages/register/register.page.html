@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ 'REGISTER' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div id="register-form-container">
+
+        <form [formGroup]="userRegistrationForm"
+              (ngSubmit)="submitUserRegistration()"
+              id="user-registration-form">
+
+            <ion-item>
+
+                <ion-input type="text"
+                           formControlName="username"
+                           placeholder="{{ 'USERNAME' | translate }}">
+                </ion-input>
+
+            </ion-item>
+
+            <ion-item>
+
+                <ion-input type="email"
+                           formControlName="email"
+                           placeholder="{{ 'SECURITY_CODE' | translate }}">
+                </ion-input>
+
+            </ion-item>
+
+            <ion-button type="submit"  color="secondary" expand="full"
+                        [disabled]="!userRegistrationForm.valid"
+                        id="submit-trip-code-button">
+                {{ 'SEND' | translate }}
+            </ion-button>
+
+        </form>
+
+    </div>
+
+
+</ion-content>

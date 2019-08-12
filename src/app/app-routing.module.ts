@@ -23,6 +23,8 @@ const routes: Routes = [
   { path: 'guides', loadChildren: './pages/guides/guides.module#GuidesPageModule' },
   { path: 'faq', loadChildren: './pages/faq/faq.module#FaqPageModule' },
   { path: 'documents', loadChildren: './pages/documents/documents.module#DocumentsPageModule' },
+  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
+  { path: 'trip-codes', loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule' }
 ];
 
 @NgModule({

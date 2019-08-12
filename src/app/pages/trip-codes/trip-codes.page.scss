@@ -1,6 +1,7 @@
 ion-content {
   --background: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
   --background-color: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
+  text-align: center;
 }
 
 ion-item {
@@ -12,22 +13,22 @@ ion-item {
   text-align: center;
 }
 
-form#login-form {
+form#trip-code-form {
   margin: auto;
   max-width: 500px;
 
   ion-item {
     --background: transparent;
+    text-align: center;
   }
 
-  ion-input.login-form-input {
+  ion-input {
     background: white;
     border-radius: 10px;
     padding: 0.3em !important; /* Override framework */
     border: none;
     margin: 1rem 0;
     font-size: 1.6em;
-    text-align: center;
 
     input {
       font-size: 1.6em;
@@ -36,6 +37,6 @@ form#login-form {
   }
 }
 
-#submit-login-button {
+ion-button {
   margin-top: 1rem;
 }

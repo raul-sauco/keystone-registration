@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'TRIP_CODES' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="trip-codes-form-container">
+
+    <form [formGroup]="tripCodeForm"
+          (ngSubmit)="submitTripCodes()"
+          id="trip-code-form">
+
+      <ion-item>
+
+        <ion-input type="text" maxlength="6"
+                   formControlName="tripId"
+                   placeholder="{{ 'TRIP_ID' | translate }}">
+        </ion-input>
+
+      </ion-item>
+
+      <ion-item>
+
+        <ion-input type="text" maxlength="6"
+                   formControlName="code"
+                   placeholder="{{ 'SECURITY_CODE' | translate }}">
+        </ion-input>
+
+      </ion-item>
+
+      <ion-button type="submit"  color="secondary" expand="full"
+                  [disabled]="!tripCodeForm.valid"
+                  id="submit-trip-code-button">
+        {{ 'SEND' | translate }}
+      </ion-button>
+
+    </form>
+
+  </div>
+
+</ion-content>

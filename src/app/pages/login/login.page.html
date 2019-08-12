@@ -4,33 +4,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding text-center="false" class="content">
+<ion-content padding>
+
   <div id="login-form-container">
 
     <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" id="login-form">
 
-      <ion-item no-padding>
+      <ion-item>
+
         <ion-input type="text" class="login-form-input"
                    formControlName="username"
                    placeholder="{{ 'USERNAME' | translate }}">
         </ion-input>
+
       </ion-item>
 
-      <ion-item no-padding>
+      <ion-item>
+
         <ion-input type="password" class="login-form-input"
                    formControlName="password"
                    placeholder="{{ 'PASSWORD' | translate }}">
         </ion-input>
+
       </ion-item>
 
-      <ion-button type="submit" color="secondary"
+      <ion-button type="submit" color="secondary" expand="full"
               [disabled]="!loginForm.valid"
-              id="submit-login-button" expand="full">
+              id="submit-login-button">
         {{ 'LOGIN' | translate }}
       </ion-button>
 
       <!-- TODO offer password recovery option -->
 
     </form>
+
   </div>
+
 </ion-content>
