@@ -1,30 +1,63 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import {NoAuthGuard} from './guards/no-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module')
+      .then(m => m.HomePageModule),
+    canActivate: [AuthGuard],
   },
   {
-      path: 'login',
-      loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module')
+      .then(m => m.LoginPageModule),
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'itinerary',
-    loadChildren: () => import('./pages/itinerary/itinerary.module').then(m => m.ItineraryPageModule)
+    loadChildren: () => import('./pages/itinerary/itinerary.module')
+      .then(m => m.ItineraryPageModule),
+    canActivate: [AuthGuard]
   },
-  { path: 'packing-list', loadChildren: './pages/packing-list/packing-list.module#PackingListPageModule' },
-  { path: 'guides', loadChildren: './pages/guides/guides.module#GuidesPageModule' },
-  { path: 'faq', loadChildren: './pages/faq/faq.module#FaqPageModule' },
-  { path: 'documents', loadChildren: './pages/documents/documents.module#DocumentsPageModule' },
-  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'trip-codes', loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule' }
+  {
+    path: 'packing-list',
+    loadChildren: './pages/packing-list/packing-list.module#PackingListPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'guides',
+    loadChildren: './pages/guides/guides.module#GuidesPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'faq',
+    loadChildren: './pages/faq/faq.module#FaqPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'documents',
+    loadChildren: './pages/documents/documents.module#DocumentsPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    loadChildren: './pages/register/register.module#RegisterPageModule',
+    canActivate: [NoAuthGuard]
+  },
+  {
+    path: 'trip-codes',
+    loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule',
+    canActivate: [NoAuthGuard]
+  }
 ];
 
 @NgModule({

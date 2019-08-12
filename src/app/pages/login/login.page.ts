@@ -95,12 +95,11 @@ export class LoginPage implements OnInit {
           this.auth.setCredentials(cred).then(
             () => {
               this.auth.authenticated = true;
+              this.router.navigateByUrl('/home');
             }).catch(
             error => {
               console.error('Error saving credentials to device: ' + error);
             });
-
-          this.router.navigateByUrl('');
 
         }
       }, async error => {

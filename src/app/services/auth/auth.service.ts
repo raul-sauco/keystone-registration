@@ -11,6 +11,7 @@ export class AuthService {
     private credentials: Credentials = null;
 
     public authenticated = false;
+    public redirectUrl: string;
 
     constructor(private storage: Storage) { }
 
