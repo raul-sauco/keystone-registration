@@ -1,44 +1,56 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>{{ 'REGISTER' | translate }}</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>{{ 'REGISTER' | translate }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-    <div id="register-form-container">
+  <h1>{{ 'WELCOME_TO_KA' | translate }}</h1>
 
-        <form [formGroup]="userRegistrationForm"
-              (ngSubmit)="submitUserRegistration()"
-              id="user-registration-form">
+  <div *ngIf="reg.tripName">
 
-            <ion-item>
+    {{ 'REGISTERING_FOR' | translate }}:
+    <div class="trip-name">{{ reg.tripName }}</div>
 
-                <ion-input type="text"
-                           formControlName="username"
-                           placeholder="{{ 'USERNAME' | translate }}">
-                </ion-input>
+  </div>
 
-            </ion-item>
+  <p>{{ 'ADVENTURE_OF_A_LIFETIME' | translate }}</p>
 
-            <ion-item>
+  <p>{{ 'NO_HITCHES' | translate }}</p>
 
-                <ion-input type="email"
-                           formControlName="email"
-                           placeholder="{{ 'SECURITY_CODE' | translate }}">
-                </ion-input>
+  <div id="register-form-container">
 
-            </ion-item>
+    <form [formGroup]="userRegistrationForm"
+          (ngSubmit)="submitUserRegistration()"
+          id="user-registration-form">
 
-            <ion-button type="submit"  color="secondary" expand="full"
-                        [disabled]="!userRegistrationForm.valid"
-                        id="submit-trip-code-button">
-                {{ 'SEND' | translate }}
-            </ion-button>
+      <ion-item>
 
-        </form>
+        <ion-input type="text"
+                   formControlName="username"
+                   placeholder="{{ 'USERNAME' | translate }}">
+        </ion-input>
 
-    </div>
+      </ion-item>
 
+      <ion-item>
+
+        <ion-input type="password"
+                   formControlName="password"
+                   placeholder="{{ 'PASSWORD' | translate }}">
+        </ion-input>
+
+      </ion-item>
+
+      <ion-button type="submit" color="secondary" expand="full"
+                  [disabled]="!userRegistrationForm.valid"
+                  id="submit-trip-code-button">
+        {{ 'SEND' | translate }}
+      </ion-button>
+
+    </form>
+
+  </div>
 
 </ion-content>
