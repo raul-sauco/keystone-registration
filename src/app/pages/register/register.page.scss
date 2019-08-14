@@ -1,42 +1,11 @@
-ion-content {
-  --background: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
-  --background-color: linear-gradient(#62ce63,#9de09d,#9de09d,#62ce63);
-  text-align: center;
-}
-
 .trip-name {
   font-weight: bold;
 }
 
-ion-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
-}
-
-form {
-  margin: auto;
-  max-width: 500px;
-
-  ion-item {
-    --background: transparent;
-    text-align: center;
-  }
-
-  ion-input {
-    background: white;
-    border-radius: 10px;
-    padding: 0.3em !important; /* Override framework */
-    border: none;
-    margin: 1rem 0;
-    font-size: 1.6em;
-
-    input {
-      font-size: 1.6em;
-      text-align: center;
-    }
-  }
-}
-
 ion-button {
   margin-top: 1rem;
+}
+
+span.required {
+  color: var(--ion-color-danger);
 }

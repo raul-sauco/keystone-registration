@@ -64,9 +64,8 @@ export class TripCodesPage implements OnInit {
   }
 
   /**
-   * todo
    * Get the trip ID and registration security code from
-   * the user and verify them against the server
+   * the user and verify them against the server.
    */
   async submitTripCodes() {
 
@@ -75,7 +74,7 @@ export class TripCodesPage implements OnInit {
         code: this.tripCodeForm.value.code,
         lang: this.translate.currentLang
       },
-      endpoint = 'r';
+      endpoint = 'trip-codes';
 
     const loading = await this.loadingCtrl.create({
       message: this.translations.SENDING_CODES_TO_SERVER
@@ -85,8 +84,6 @@ export class TripCodesPage implements OnInit {
 
     this.api.post(endpoint, params).subscribe(
       async (response: any) => {
-
-        await loading.dismiss();
 
         if (response.error === false) {
 
@@ -133,6 +130,9 @@ export class TripCodesPage implements OnInit {
         });
 
         await alert.present();
+
+      }, async () => {
+        await loading.dismiss();
       }
     );
   }

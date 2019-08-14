@@ -67,7 +67,7 @@ export class AppComponent {
     }
 
     // todo delete the next line after tests
-    this.translate.use('zh-cmn-Hans');
+    // this.translate.use('zh-cmn-Hans');
 
   }
 
