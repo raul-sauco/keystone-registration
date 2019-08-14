@@ -13,6 +13,7 @@
   "DIETARY_REQUIREMENTS": "饮食要求",
   "DATE": "日期",
   "DATE_NOT_MATCH_TODAY": "输入的日期 '{{formDate}}' 必须和今日日期一致'{{today}}'",
+  "DETAILS_UPDATED": "The details were successfully updated",
   "DIETARY_REQUIREMENTS_OTHER": "特殊饮食要求",
   "DOB": "出生日期",
   "DOCS": "文件",
@@ -85,6 +86,7 @@
   "TRIP_ID": "行程代码",
   "TRY_AGAIN_LATER": "请稍后重试",
   "USERNAME": "用户名",
+  "WAIVER_ACCEPTED": "We updated your details to reflect that you accepted the waiver conditions",
   "WELCOME_TO_KA": "欢迎来到卡赛探险",
   "WRITE_QUESTION_HERE": "请在此写下您的问题...",
   "WRITE_YOUR_USER_NAME_SOMEWHERE": "您的用户名为<strong>{{name}}</strong>，请妥善记录下来，以便将来您在本台设备上或其他电子设备上再次登陆之需。"
