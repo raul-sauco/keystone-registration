@@ -1,9 +1,100 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>privacy-policy</ion-title>
+    <ion-buttons slot="start" *ngIf="auth.authenticated">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'PRIVACY_POLICY' | translate | uppercase }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+  <div id="privacy-policy-en" *ngIf="!translate.currentLang.includes('zh')">
+
+    <h1>Your privacy is important to Keystone Adventures</h1>
+
+    <p>
+      We attach great importance to protecting personal data and maintaining privacy.
+      This policy describes the types of personal information we may collect from you,
+      the purposes for which we use the information, the circumstances in which we may
+      share the information and the steps that we take to safeguard the information to
+      rotect your privacy.
+    </p>
+
+    <h1>The personal data we collect and why</h1>
+
+    <p>
+      When entering your data into the online registration form we collect this data
+      from you for the purpose of registering you for an experiential/outdoor education
+      rogram. Of course, you are not required to supply any of the information that we
+      may request. However, failure to do so may result in our being unable to register
+      you for the program.
+    </p>
+
+    <h1>Use and disclosure of your personal data</h1>
+
+    <p>
+      By submitting this registration form you consent to the processing of the entered
+      information by Keystone Adventures as described in this privacy statement. We will
+      use the personal information to process your registration and make arrangements for
+      the program. The information will NOT be shared with third parties.
+    </p>
+
+    <h1>Controlling your personal data</h1>
+
+    <p>You are entitled to access any personal data about you held temporarily by Keystone
+      Adventures at any time. You are also entitled to have us modify or delete any
+      information that you believe is incorrect or out of date.
+    </p>
+
+    <p>Under normal circumstances, all of your personal information will be deleted 7 Days
+      after the conclusion of the trip. The only exception to this is if there are any
+      outstanding complaints, medical issues, etc, which might require us to keep your
+      information for a longer period of time.
+    </p>
+
+  </div>
+
+  <div id="privacy-polity-zh" *ngIf="translate.currentLang.includes('zh')">>
+
+    <h1>您的个人隐私对卡赛非常重要</h1>
+
+    <p>
+      我们非常重视保护个人信息和保护隐私。 该条款陈述了我们可能向您收集个人信息的类型、我们收集该信息的目
+      的、我们在何等情况下可能共享该信息，以及我们在此过程中为保护您的隐私而采取的安全措施。
+    </p>
+
+    <h1>我们收集的个人信息及原因</h1>
+
+    <p>
+      在线报名登记的时候您会输入您的个人信息，我们向您收集这些数据的原因是为了给您报名参加一个体验式/户外教
+      育项目。当然，您可以不必提供我们可能询问的任何信息。 但是，这也意味着我们无法成功为您报名登记该项目。
+    </p>
+
+    <h1>使用和泄漏您的个人信息</h1>
+
+    <p>
+      提交此报名登记表即表示您已同意卡塞探险按照本隐私声明中的规定处理您提供的信息。 我们将使用您的个人信息
+      完成您的报名登记并开始筹备该行程。您的信息不会共享给任何第三方。
+    </p>
+
+    <h1>控制您的个人数据</h1>
+
+    <p>
+      您所有的个人资料仅由卡赛探险临时保存，您有权随时登陆访问。 您还有权让我们修改或删除您认为不正确的或过时的任何信息。
+    </p>
+
+    <p>
+      在正常情况下，您所有的个人信息将在行程结束后7天内删除。 唯一例外的情况是，如有任何处理中的投诉、
+      医疗问题等，可能需要我们将您的信息保留更长的时间。
+    </p>
+
+  </div>
+
+  <ion-button routerLink="/register" *ngIf="!auth.authenticated">
+    {{ 'GOT_IT' | translate }}
+  </ion-button>
 
 </ion-content>

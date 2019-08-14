@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PrivacyPolicyPage } from './privacy-policy.page';
+import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -19,7 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MarkdownToHtmlModule,
+    TranslateModule
   ],
   declarations: [PrivacyPolicyPage]
 })
