@@ -20,9 +20,8 @@ export class AuthGuard implements CanActivate {
   }
 
   checkAuthenticated(url: string): boolean {
-    if (this.auth.authenticated) { console.log('User is auth'); return true; }
+    if (this.auth.authenticated) { return true; }
 
-    console.log('User is not auth');
     // https://angular.io/guide/router#milestone-5-route-guards
     // Store for redirecting
     this.auth.redirectUrl = url;

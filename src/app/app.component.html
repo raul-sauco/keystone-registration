@@ -13,6 +13,7 @@
 
         <ion-list>
 
+          <!-- Application Pages -->
           <ion-list-header>
             {{ 'LINKS' | translate | uppercase }}
           </ion-list-header>
@@ -26,6 +27,7 @@
             </ion-item>
           </ion-menu-toggle>
 
+          <!-- User Info pages -->
           <ion-list-header>
             {{ 'ME' | translate | uppercase }}
           </ion-list-header>
@@ -34,7 +36,21 @@
             <ion-item button (click)="logout()">
               <ion-icon slot="start" name="log-out"></ion-icon>
               <ion-label>
-                {{ 'LOGOUT' | translate | uppercase }}
+                {{ 'LOGOUT' | translate | uppercase }} ({{ auth.credentials.userName }})
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Company Policy pages -->
+          <ion-list-header>
+            {{ 'POLICY' | translate | uppercase }}
+          </ion-list-header>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of policyPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{ p.title | translate | uppercase }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

@@ -57,7 +57,9 @@ const routes: Routes = [
     path: 'trip-codes',
     loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule',
     canActivate: [NoAuthGuard]
-  }
+  },
+  { path: 'privacy-policy', loadChildren: './pages/privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' },
+  { path: 'waiver', loadChildren: './pages/waiver/waiver.module#WaiverPageModule' }
 ];
 
 @NgModule({

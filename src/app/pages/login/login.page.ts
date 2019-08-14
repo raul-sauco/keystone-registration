@@ -88,13 +88,14 @@ export class LoginPage implements OnInit {
             buttons: [this.translations.OK]
           });
 
+          await alert.present();
+
         } else {
 
           const cred = new Credentials(response.credentials);
 
           this.auth.setCredentials(cred).then(
             () => {
-              this.auth.authenticated = true;
               this.router.navigateByUrl('/home');
             }).catch(
             error => {

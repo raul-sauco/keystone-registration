@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { TripService } from './services/trip/trip.service';
 import { AuthService } from './services/auth/auth.service';
 
 @Component({
@@ -24,14 +23,18 @@ export class AppComponent {
     {title: 'DOCUMENTS', url: '/documents', icon: 'document'}
   ];
 
+  public policyPages = [
+    {title: 'WAIVER', url: '/waiver', icon: 'paper'},
+    {title: 'PRIVACY_POLICY', url: '/privacy-policy', icon: 'glasses'}
+  ];
+
   constructor(
     private auth: AuthService,
     private translate: TranslateService,
     private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private tripService: TripService
+    private statusBar: StatusBar
   ) {
     this.initializeApp();
     this.initTranslate();

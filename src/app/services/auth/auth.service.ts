@@ -14,6 +14,7 @@ export class AuthService {
   public redirectUrl: string;
 
   constructor(private storage: Storage) {
+    this.checkAuthenticated();
   }
 
   /** Set the auth credentials */
