@@ -28,6 +28,10 @@ export class AppComponent {
     {title: 'PRIVACY_POLICY', url: '/privacy-policy', icon: 'glasses'}
   ];
 
+  public mePages = [
+    {title: 'PERSONAL_INFORMATION', url: '/personal-info', icon: 'person'}
+  ];
+
   constructor(
     private auth: AuthService,
     private translate: TranslateService,

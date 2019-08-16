@@ -58,8 +58,21 @@ const routes: Routes = [
     loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule',
     canActivate: [NoAuthGuard]
   },
-  { path: 'privacy-policy', loadChildren: './pages/privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' },
-  { path: 'waiver', loadChildren: './pages/waiver/waiver.module#WaiverPageModule' }
+  {
+    path: 'privacy-policy',
+    loadChildren: './pages/privacy-policy/privacy-policy.module#PrivacyPolicyPageModule'
+  },
+  {
+    path: 'waiver',
+    loadChildren: './pages/waiver/waiver.module#WaiverPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'personal-info',
+    loadChildren: './pages/personal-info/personal-info.module#PersonalInfoPageModule',
+    canActivate: [AuthGuard]
+  },
+  { path: 'update-personal-info', loadChildren: './pages/update-personal-info/update-personal-info.module#UpdatePersonalInfoPageModule' }
 ];
 
 @NgModule({

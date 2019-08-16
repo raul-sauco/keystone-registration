@@ -20,7 +20,7 @@
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
               <ion-label>
                 {{ p.title | translate | uppercase }}
               </ion-label>
@@ -34,9 +34,18 @@
 
           <ion-menu-toggle autoHide="false">
             <ion-item button (click)="logout()">
-              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-icon slot="start" name="log-out" color="secondary"></ion-icon>
               <ion-label>
                 {{ 'LOGOUT' | translate | uppercase }} ({{ auth.credentials.userName }})
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of mePages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon" color="secondary"></ion-icon>
+              <ion-label>
+                {{ p.title | translate | uppercase }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -48,7 +57,7 @@
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of policyPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="tertiary"></ion-icon>
               <ion-label>
                 {{ p.title | translate | uppercase }}
               </ion-label>

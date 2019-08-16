@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'PERSONAL_INFORMATION' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="personal-info-container" *ngIf="studentService.getStudent(); else loading">
+
+    <ion-list>
+
+      <ion-item *ngFor="let attribute of attributes" class="student-item">
+
+        <ion-label color="medium" position="stacked">
+          {{ studentService.getStudent().getAttributeLabel(attribute) }}:
+        </ion-label>
+
+        <ion-text [class]="getAttributeClass(attribute)">
+          {{ studentService.getStudent().getAttributeText(attribute) }}
+        </ion-text>
+
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/update-personal-info">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ng-template #loading>
+
+    <app-loading-spinner-content></app-loading-spinner-content>
+
+  </ng-template>
+
+</ion-content>

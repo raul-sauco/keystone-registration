@@ -80,7 +80,7 @@ export class WaiverPage implements OnInit {
         const alert = await this.alertCtrl.create({
           header: this.translate.instant('SUCCESS'),
           subHeader: this.translate.instant('DETAILS_UPDATED'),
-          message: this.translate.instant('WAIVER_ACCEPTED'),
+          message: this.translate.instant('WAIVER_HAS_BEEN_ACCEPTED'),
           buttons: [{
             text: this.translate.instant('OK'),
             role: 'accept',
