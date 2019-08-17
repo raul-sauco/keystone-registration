@@ -69,7 +69,7 @@ export class UpdatePersonalInfoPage implements OnInit, OnDestroy {
       allergies: [this.student.allergies],
       allergiesOther: [this.student.allergiesOther],
       medicalInformation: [this.student.medicalInformation],
-      insurance: [this.student.insurance],
+      insurance: ['' + this.student.insurance],
       insuranceName: [this.student.insuranceName],
       insurancePolicyNumber: [this.student.insurancePolicyNumber]
     });

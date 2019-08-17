@@ -68,6 +68,40 @@
 
       <ion-item-group>
 
+        <ion-list-header>
+          <ion-label>{{ 'LEGAL' | translate }}</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label position="stacked">{{ student.getAttributeLabel('guardianName') }}</ion-label>
+          <ion-input type="text" formControlName="guardianName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">
+            {{ 'INSURANCE_STATUS' | translate }}
+          </ion-label>
+          <ion-select formControlName="insurance">
+            <ion-select-option value=0>{{ "I.0" | translate }}</ion-select-option>
+            <ion-select-option value=1>{{ "I.1" | translate }}</ion-select-option>
+            <ion-select-option value=2>{{ "I.2" | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
+          <ion-label position="stacked">{{ student.getAttributeLabel('insuranceName') }}</ion-label>
+          <ion-input type="text" formControlName="insuranceName"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
+          <ion-label position="stacked">{{ student.getAttributeLabel('insurancePolicyNumber') }}</ion-label>
+          <ion-input type="text" formControlName="insurancePolicyNumber"></ion-input>
+        </ion-item>
+
+      </ion-item-group>
+
+      <ion-item-group>
+
         <ion-list-header>{{ 'HEALTH' | translate }}</ion-list-header>
 
         <ion-item  [ngClass]="getItemCssClass('dietaryRequirements')">
@@ -90,41 +124,6 @@
           <ion-textarea
             formControlName="dietaryRequirementsOther">
           </ion-textarea>
-        </ion-item>
-
-      </ion-item-group>
-
-      <ion-item-group>
-
-        <ion-list-header>
-          <ion-label>{{ 'LEGAL' | translate }}</ion-label>
-        </ion-list-header>
-
-        <ion-item>
-          <ion-label position="stacked">{{ student.getAttributeLabel('guardianName') }}</ion-label>
-          <ion-input type="text" formControlName="guardianName"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">
-            {{ 'INSURANCE_STATUS' | translate }}
-            <ion-icon name="help" (click)="showInsuranceHelpModal()"></ion-icon>
-          </ion-label>
-          <ion-select formControlName="insurance">
-            <ion-select-option value=0>{{ "I.0" | translate }}</ion-select-option>
-            <ion-select-option value=1>{{ "I.1" | translate }}</ion-select-option>
-            <ion-select-option value=2>{{ "I.2" | translate }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-
-        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
-          <ion-label position="stacked">{{ student.getAttributeLabel('insuranceName') }}</ion-label>
-          <ion-input type="text" formControlName="insuranceName"></ion-input>
-        </ion-item>
-
-        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
-          <ion-label position="stacked">{{ student.getAttributeLabel('insurancePolicyNumber') }}</ion-label>
-          <ion-input type="text" formControlName="insurancePolicyNumber"></ion-input>
         </ion-item>
 
       </ion-item-group>
