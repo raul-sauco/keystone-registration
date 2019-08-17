@@ -23,6 +23,23 @@ export class Student {
 
   private translations: any;
 
+  private personalAttributes = [
+    'firstName', 'lastName', 'citizenship', 'travelDocument', 'gender', 'dob'
+  ];
+
+  private legalAttributes =  [
+    'waiverAccepted', 'waiverSignedOn', 'guardianName',
+    'insurance', 'insuranceName', 'insurancePolicyNumber'
+  ];
+
+  private dietaryAttributes = [
+    'dietaryRequirements', 'dietaryRequirementsOther'
+  ];
+
+  private medicalAttributes = [
+    'allergies', 'allergiesOther', 'medicalInformation'
+  ];
+
   constructor(json: any, private translate: TranslateService) {
 
     // Set the ID attribute only at creation
@@ -161,5 +178,21 @@ export class Student {
 
     return !this[attr];
 
+  }
+
+  getPersonalAttributes() {
+    return this.personalAttributes;
+  }
+
+  getLegalAttributes() {
+    return this.legalAttributes;
+  }
+
+  getDietaryAttributes() {
+    return this.dietaryAttributes;
+  }
+
+  getMedicalAttributes() {
+    return this.medicalAttributes;
   }
 }

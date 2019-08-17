@@ -1,5 +1,17 @@
-.student-attr-empty {
-  color: var(--ion-color-danger);
+ion-list-header {
+  background: lighten(#2A872B, 60%);
+}
+
+ion-item {
+  ion-text {
+    padding: 0.5rem 0;
+  }
+  &.student-attr-empty {
+    --background: rgba(250, 0, 0, 0.05);
+    ion-text {
+      color: var(--ion-color-danger);
+    }
+  }
 }
 
 #personal-info-container {

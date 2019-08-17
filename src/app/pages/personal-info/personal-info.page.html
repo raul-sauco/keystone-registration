@@ -11,18 +11,23 @@
 
 <ion-content padding>
 
-  <div id="personal-info-container" *ngIf="studentService.getStudent(); else loading">
+  <div id="personal-info-container" *ngIf="student; else loading">
 
-    <ion-list>
+    <ion-list *ngFor="let at of attributeTypes">
 
-      <ion-item *ngFor="let attribute of attributes" class="student-item">
+      <ion-list-header>{{ at.header | translate }}</ion-list-header>
 
-        <ion-label color="medium" position="stacked">
-          {{ studentService.getStudent().getAttributeLabel(attribute) }}:
+      <ion-item inner-padding-bottom
+        *ngFor="let attribute of at.attrs"
+        class="student-item"
+        [ngClass]="getAttributeClass(attribute)">
+
+        <ion-label position="stacked">
+          {{ student.getAttributeLabel(attribute) }}:
         </ion-label>
 
-        <ion-text [class]="getAttributeClass(attribute)">
-          {{ studentService.getStudent().getAttributeText(attribute) }}
+        <ion-text>
+          {{ student.getAttributeText(attribute) }}
         </ion-text>
 
       </ion-item>
