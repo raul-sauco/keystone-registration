@@ -24,6 +24,40 @@ export class Student {
   private translations: any;
 
   constructor(json: any, private translate: TranslateService) {
+
+    // Set the ID attribute only at creation
+    this.id = json.id;
+    this.setFromJSON(json);
+    this.getTranslations();
+  }
+
+  /**
+   * Get all translations from TranslateService
+   */
+  private getTranslations() {
+    this.translate.get([
+      'ID', 'FIRST_NAME', 'LAST_NAME', 'CITIZENSHIP', 'TRAVEL_DOCUMENT',
+      'GENDER', 'G', 'DOB', 'GUARDIAN_NAME', 'WAIVER_ACCEPTED', 'WAIVER_SIGNED_ON',
+      'DIETARY_REQUIREMENTS', 'DIETARY_REQUIREMENTS_OTHER', 'ALLERGIES',
+      'ALLERGIES_OTHER', 'MEDICAL_INFORMATION', 'INSURANCE', 'I', 'INSURANCE_NAME',
+      'INSURANCE_POLICY_NUMBER', 'YES', 'NO', 'EMPTY'
+    ]).subscribe(
+      res => this.translations = res
+    );
+  }
+
+  /**
+   * Use JSON data to set this student's attributes.
+   */
+  setFromJSON(json) {
+
+    // Prevent updates if the JSON id does not match
+    if (this.id && this.id !== json.id) {
+      console.error('Trying to update student with wrong ID parameter');
+      return false;
+    }
+
+    // Use the id attribute for creation scenarios
     this.id = json.id;
     this.firstName = json.first_name;
     this.lastName = json.last_name;
@@ -39,26 +73,9 @@ export class Student {
     this.allergies = json.allergies;
     this.allergiesOther = json.allergies_other;
     this.medicalInformation = json.medical_information;
-    this.insurance = json.insurance === 1 ? true : json.insurance === 0 ? false : null;
+    this.insurance = json.insurance;
     this.insuranceName = json.insurance_name;
     this.insurancePolicyNumber = json.insurance_policy_number;
-
-    this.getTranslations();
-  }
-
-  /**
-   * Get all translations from TranslateService
-   */
-  private getTranslations() {
-    this.translate.get([
-      'ID', 'FIRST_NAME', 'LAST_NAME', 'CITIZENSHIP', 'TRAVEL_DOCUMENT',
-      'GENDER', 'DOB', 'GUARDIAN_NAME', 'WAIVER_ACCEPTED', 'WAIVER_SIGNED_ON',
-      'DIETARY_REQUIREMENTS', 'DIETARY_REQUIREMENTS_OTHER', 'ALLERGIES',
-      'ALLERGIES_OTHER', 'MEDICAL_INFORMATION', 'INSURANCE', 'INSURANCE_NAME',
-      'INSURANCE_POLICY_NUMBER', 'YES', 'NO', 'EMPTY'
-    ]).subscribe(
-      res => this.translations = res
-    );
   }
 
   /**
@@ -106,12 +123,20 @@ export class Student {
       }
     }
 
+    if (attr === 'gender') {
+      return this.translations.G[this[attr]];
+    }
+
+    if (attr === 'insurance') {
+      return this.translations.I[this[attr]];
+    }
+
     if (!this[attr]) {
       return this.translations.EMPTY;
     }
 
     // Customize a few attributes
-    if (attr === 'waiverSignedOn') {
+    if (attr === 'waiverSignedOn' || attr === 'dob') {
       return formatDate(
         this[attr],
         'longDate',
@@ -120,6 +145,21 @@ export class Student {
     }
 
     return this[attr];
+
+  }
+
+  /**
+   * Find out wheter an attribute is null.
+   */
+  isAttributeEmpty(attr): boolean {
+
+    if (typeof this[attr] === 'boolean') {
+
+      return !(this[attr] === true || this[attr] === false);
+
+    }
+
+    return !this[attr];
 
   }
 }

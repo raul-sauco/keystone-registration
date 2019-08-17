@@ -1,0 +1,11 @@
+ion-button {
+  margin-top: 1rem;
+}
+
+ion-list-header {
+  background: lighten(#2A872B, 60%);
+}
+
+ion-item.student-attr-empty {
+  --background: rgba(250, 0, 0, 0.05);
+}

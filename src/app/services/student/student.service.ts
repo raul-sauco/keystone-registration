@@ -4,6 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Student } from '../../models/student';
 import { TranslateService } from '@ngx-translate/core';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class StudentService {
 
   private student = null;
+  student$: Subject<Student> = new Subject<Student>();
   private retries = 5;
 
   constructor(
@@ -41,6 +43,7 @@ export class StudentService {
     this.api.get(endpoint, null, options).subscribe(
       async res => {
         this.student = new Student(res, this.translate);
+        this.student$.next(this.student);
       }, error => {
         console.error(error);
         this.retries--;
@@ -49,7 +52,15 @@ export class StudentService {
     );
   }
 
-  getStudent() {
+  /**
+   * Update the student's provider with the given JSON, and notify subscriptions.
+   */
+  updateStudentFromJson(json) {
+    this.student.setFromJSON(json);
+    this.student$.next(this.student);
+  }
+
+  getStudent(): Student {
     return this.student;
   }
 }
