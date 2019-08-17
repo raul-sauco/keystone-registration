@@ -102,27 +102,61 @@
 
       <ion-item-group>
 
-        <ion-list-header>{{ 'HEALTH' | translate }}</ion-list-header>
+        <ion-list-header>{{ 'DIETARY_REQUIREMENTS' | translate }}</ion-list-header>
 
         <ion-item  [ngClass]="getItemCssClass('dietaryRequirements')">
           <ion-label position="floating">
             {{ 'DIETARY_REQUIREMENTS' | translate }}</ion-label>
           <ion-select formControlName="dietaryRequirements">
-            <ion-select-option>{{ "DR.0" | translate }}</ion-select-option>
-            <ion-select-option>{{ "DR.2" | translate }}</ion-select-option>
-            <ion-select-option>{{ "DR.3" | translate }}</ion-select-option>
-            <ion-select-option>{{ "DR.4" | translate }}</ion-select-option>
-            <ion-select-option>{{ "DR.5" | translate }}</ion-select-option>
-            <ion-select-option>{{ "DR.1" | translate }}</ion-select-option>
+            <ion-select-option value="0">{{ "DR.0" | translate }}</ion-select-option>
+            <ion-select-option value="2">{{ "DR.2" | translate }}</ion-select-option>
+            <ion-select-option value="3">{{ "DR.3" | translate }}</ion-select-option>
+            <ion-select-option value="4">{{ "DR.4" | translate }}</ion-select-option>
+            <ion-select-option value="5">{{ "DR.5" | translate }}</ion-select-option>
+            <ion-select-option value="1">{{ "DR.1" | translate }}</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item *ngIf="personalInfoForm.value.dietaryRequirements &&
-          personalInfoForm.value.dietaryRequirements.includes('Other')">
+          personalInfoForm.value.dietaryRequirements === '1'">
           <ion-label position="floating">
-            {{ 'SPECIFY_DIETARY_REQUIREMENTS' | translate }}</ion-label>
+            {{ 'DIETARY_REQUIREMENTS_OTHER' | translate }}</ion-label>
           <ion-textarea
             formControlName="dietaryRequirementsOther">
+          </ion-textarea>
+        </ion-item>
+
+      </ion-item-group>
+      
+      <ion-item-group>
+        
+        <ion-list-header>{{ 'MEDICAL_INFORMATION' | translate }}</ion-list-header>
+
+        <ion-item  [ngClass]="getItemCssClass('allergies')">
+          <ion-label position="floating">
+            {{ 'ALLERGIES' | translate }}</ion-label>
+          <ion-select formControlName="allergies">
+            <ion-select-option value="0">{{ "ALLER.0" | translate }}</ion-select-option>
+            <ion-select-option value="2">{{ "ALLER.2" | translate }}</ion-select-option>
+            <ion-select-option value="3">{{ "ALLER.3" | translate }}</ion-select-option>
+            <ion-select-option value="1">{{ "ALLER.1" | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="personalInfoForm.value.allergies &&
+          personalInfoForm.value.allergies === '1'">
+          <ion-label position="floating">
+            {{ 'ALLERGIES_OTHER' | translate }}</ion-label>
+          <ion-textarea
+            formControlName="allergiesOther">
+          </ion-textarea>
+        </ion-item>
+
+        <ion-item  [ngClass]="getItemCssClass('medicalInformation')">
+          <ion-label position="floating">
+            {{ 'MEDICAL_INFORMATION' | translate }}</ion-label>
+          <ion-textarea
+            formControlName="medicalInformation">
           </ion-textarea>
         </ion-item>
 

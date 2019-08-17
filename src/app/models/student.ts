@@ -23,22 +23,10 @@ export class Student {
 
   private translations: any;
 
-  private personalAttributes = [
-    'firstName', 'lastName', 'citizenship', 'travelDocument', 'gender', 'dob'
-  ];
-
-  private legalAttributes =  [
-    'waiverAccepted', 'waiverSignedOn', 'guardianName',
-    'insurance', 'insuranceName', 'insurancePolicyNumber'
-  ];
-
-  private dietaryAttributes = [
-    'dietaryRequirements', 'dietaryRequirementsOther'
-  ];
-
-  private medicalAttributes = [
-    'allergies', 'allergiesOther', 'medicalInformation'
-  ];
+  private personalAttributes;
+  private legalAttributes;
+  private dietaryAttributes;
+  private medicalAttributes;
 
   constructor(json: any, private translate: TranslateService) {
 
@@ -46,6 +34,8 @@ export class Student {
     this.id = json.id;
     this.setFromJSON(json);
     this.getTranslations();
+    this.setAttributeArrays();
+
   }
 
   /**
@@ -55,7 +45,7 @@ export class Student {
     this.translate.get([
       'ID', 'FIRST_NAME', 'LAST_NAME', 'CITIZENSHIP', 'TRAVEL_DOCUMENT',
       'GENDER', 'G', 'DOB', 'GUARDIAN_NAME', 'WAIVER_ACCEPTED', 'WAIVER_SIGNED_ON',
-      'DIETARY_REQUIREMENTS', 'DIETARY_REQUIREMENTS_OTHER', 'ALLERGIES',
+      'DR', 'DIETARY_REQUIREMENTS', 'DIETARY_REQUIREMENTS_OTHER', 'ALLER', 'ALLERGIES',
       'ALLERGIES_OTHER', 'MEDICAL_INFORMATION', 'INSURANCE', 'I', 'INSURANCE_NAME',
       'INSURANCE_POLICY_NUMBER', 'YES', 'NO', 'EMPTY'
     ]).subscribe(
@@ -148,6 +138,14 @@ export class Student {
       return this.translations.I[this[attr]];
     }
 
+    if (attr === 'dietaryRequirements') {
+      return this.translations.DR[this[attr]];
+    }
+
+    if (attr === 'allergies') {
+      return this.translations.ALLER[this[attr]];
+    }
+
     if (!this[attr]) {
       return this.translations.EMPTY;
     }
@@ -171,9 +169,11 @@ export class Student {
   isAttributeEmpty(attr): boolean {
 
     if (typeof this[attr] === 'boolean') {
-
       return !(this[attr] === true || this[attr] === false);
+    }
 
+    if (typeof this[attr] === 'number') {
+      return this[attr] === null;
     }
 
     return !this[attr];
@@ -194,5 +194,35 @@ export class Student {
 
   getMedicalAttributes() {
     return this.medicalAttributes;
+  }
+
+  /**
+   * Initialize the class attribute arrays
+   */
+  setAttributeArrays() {
+
+    this.personalAttributes = [
+      {name: 'firstName', visible: true}, {name: 'lastName', visible: true},
+      {name: 'citizenship', visible: true}, {name: 'travelDocument', visible: true},
+      {name: 'gender', visible: true}, {name: 'dob', visible: true}
+    ];
+
+    this.legalAttributes = [
+      {name: 'waiverAccepted', visible: true}, {name: 'waiverSignedOn', visible: true},
+      {name: 'guardianName', visible: true}, {name: 'insurance', visible: true},
+      {name: 'insuranceName', visible: this.insurance !== null},
+      {name: 'insurancePolicyNumber', visible: this.insurance !== null}
+    ];
+
+    this.dietaryAttributes = [
+      {name: 'dietaryRequirements', visible: true},
+      {name: 'dietaryRequirementsOther', visible: this.dietaryRequirements === 1}
+    ];
+
+    this.medicalAttributes = [
+      {name: 'allergies', visible: true},
+      {name: 'allergiesOther', visible: this.allergies === 1},
+      {name: 'medicalInformation', visible: true}
+    ];
   }
 }

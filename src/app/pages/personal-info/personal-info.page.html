@@ -17,20 +17,24 @@
 
       <ion-list-header>{{ at.header | translate }}</ion-list-header>
 
-      <ion-item inner-padding-bottom
-        *ngFor="let attribute of at.attrs"
-        class="student-item"
-        [ngClass]="getAttributeClass(attribute)">
+      <ng-container *ngFor="let attribute of at.attrs">
 
-        <ion-label position="stacked">
-          {{ student.getAttributeLabel(attribute) }}:
-        </ion-label>
+        <ion-item
+          *ngIf="attribute.visible"
+          class="student-item"
+          [ngClass]="getAttributeClass(attribute.name)">
 
-        <ion-text>
-          {{ student.getAttributeText(attribute) }}
-        </ion-text>
+          <ion-label position="stacked">
+            {{ student.getAttributeLabel(attribute.name) }}:
+          </ion-label>
 
-      </ion-item>
+          <ion-text>
+            {{ student.getAttributeText(attribute.name) }}
+          </ion-text>
+
+        </ion-item>
+
+      </ng-container>
 
     </ion-list>
 

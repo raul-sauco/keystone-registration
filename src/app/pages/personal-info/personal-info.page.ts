@@ -43,16 +43,7 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
    */
   getAttributeClass(attr) {
 
-    if (typeof this.studentService.getStudent()[attr] === 'boolean') {
-      if (this.studentService.getStudent()[attr] === true ||
-        this.studentService.getStudent()[attr] === false) {
-        return 'student-attr-no-empty';
-      } else {
-        return 'student-attr-empty';
-      }
-    }
-
-    if (!this.studentService.getStudent()[attr]) {
+    if (this.student.isAttributeEmpty(attr)) {
       return 'student-attr-empty';
     }
 
@@ -61,6 +52,7 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
   }
 
   setAttributeTypes() {
+
     this.attributeTypes = [
       {
         attrs: this.student.getPersonalAttributes(),
@@ -72,13 +64,14 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
       },
       {
         attrs: this.student.getDietaryAttributes(),
-        header: 'DIETARY'
+        header: 'DIETARY_REQUIREMENTS'
       },
       {
         attrs: this.student.getMedicalAttributes(),
-        header: 'MEDICAL'
+        header: 'MEDICAL_INFORMATION'
       },
     ];
+
   }
 
 }

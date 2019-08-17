@@ -1,6 +1,12 @@
 {
   "ACCEPT": "同意并签署",
   "ADVENTURE_OF_A_LIFETIME": "您即将开启一段终身难忘的探险之旅",
+  "ALLER": {
+    "0": "无",
+    "1": "其他",
+    "2": "花生",
+    "3": "贝类"
+  },
   "ALLERGIES": "过敏史",
   "ALLERGIES_OTHER": "其他过敏史",
   "ALL_GOOD": "搞定",
