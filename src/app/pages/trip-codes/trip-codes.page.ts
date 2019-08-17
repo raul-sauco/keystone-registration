@@ -13,7 +13,7 @@ import { RegistrationService } from '../../services/registration/registration.se
 })
 export class TripCodesPage implements OnInit {
 
-  private tripCodeForm: FormGroup;
+  public tripCodeForm: FormGroup;
   private translations: any;
 
   constructor(

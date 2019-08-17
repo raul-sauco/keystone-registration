@@ -10,9 +10,9 @@ import { Student } from '../../models/student';
 })
 export class PersonalInfoPage implements OnInit, OnDestroy {
 
-  private student: Student = null;
+  public student: Student = null;
   private student$;
-  private attributeTypes;
+  public attributeTypes;
 
   constructor(
     private studentService: StudentService,

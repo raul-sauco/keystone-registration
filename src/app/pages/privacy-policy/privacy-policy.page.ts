@@ -10,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class PrivacyPolicyPage implements OnInit {
 
   constructor(
-    private auth: AuthService,
-    private translate: TranslateService
+    public auth: AuthService,
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {

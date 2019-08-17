@@ -9,7 +9,7 @@ import { TripService } from '../../services/trip/trip.service';
 export class PackingListPage implements OnInit {
 
   constructor(
-    private tripService: TripService
+    public tripService: TripService
   ) { }
 
   ngOnInit() {

@@ -14,11 +14,11 @@ import { Question } from '../../models/question';
 })
 export class FaqPage implements OnInit {
 
-  private questionForm: FormGroup;
+  public questionForm: FormGroup;
   private translations: any;
 
   constructor(
-    private tripService: TripService,
+    public tripService: TripService,
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private api: ApiService,

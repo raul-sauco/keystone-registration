@@ -14,17 +14,17 @@ import { Router } from '@angular/router';
 })
 export class WaiverPage implements OnInit {
 
-  private waiverForm: FormGroup;
+  public waiverForm: FormGroup;
   private today: string;
 
   constructor(
     private api: ApiService,
     private auth: AuthService,
-    private translate: TranslateService,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {

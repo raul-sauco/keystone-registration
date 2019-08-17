@@ -16,8 +16,8 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class UpdatePersonalInfoPage implements OnInit, OnDestroy {
 
-  private personalInfoForm: FormGroup;
-  private student: Student = null;
+  public personalInfoForm: FormGroup;
+  public student: Student = null;
   private student$;
 
   constructor(

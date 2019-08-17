@@ -33,7 +33,7 @@ export class AppComponent {
   ];
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private translate: TranslateService,
     private router: Router,
     private platform: Platform,

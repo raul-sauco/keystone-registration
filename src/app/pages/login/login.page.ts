@@ -14,7 +14,7 @@ import { Credentials } from '../../models/credentials';
 })
 export class LoginPage implements OnInit {
 
-  private loginForm: FormGroup;
+  loginForm: FormGroup;
   private loginEndpoint = 'login';
   private translations: any;
 

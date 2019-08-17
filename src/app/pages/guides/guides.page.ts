@@ -10,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class GuidesPage implements OnInit {
 
   constructor(
-    private tripService: TripService,
-    private translate: TranslateService
+    public tripService: TripService,
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {}

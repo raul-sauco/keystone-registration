@@ -11,7 +11,7 @@ export class ItineraryPage implements OnInit {
   protected objectKeys = Object.keys;
 
   constructor(
-    private tripService: TripService
+    public tripService: TripService
   ) { }
 
   ngOnInit() { }

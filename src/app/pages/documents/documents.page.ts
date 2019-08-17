@@ -18,7 +18,7 @@ export class DocumentsPage implements OnInit {
   ];
 
   constructor(
-    private tripService: TripService
+    public tripService: TripService
   ) { }
 
   ngOnInit() {

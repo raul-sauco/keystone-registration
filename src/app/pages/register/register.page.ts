@@ -15,18 +15,18 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
+  public userRegistrationForm: FormGroup;
+
   constructor(
     private api: ApiService,
     private auth: AuthService,
     private translate: TranslateService,
     private formBuilder: FormBuilder,
-    private reg: RegistrationService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private router: Router
+    private router: Router,
+    public reg: RegistrationService
   ) {}
-
-  private userRegistrationForm: FormGroup;
 
   /**
    * Validate if the passwords are identical, fail otherwise.
