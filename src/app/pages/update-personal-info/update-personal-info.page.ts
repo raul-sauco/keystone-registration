@@ -56,8 +56,6 @@ export class UpdatePersonalInfoPage implements OnInit, OnDestroy {
    */
   initPersonalInfoForm() {
 
-    console.log(this.student);
-
     this.personalInfoForm = this.formBuilder.group({
       firstName: [this.student.firstName],
       lastName: [this.student.lastName],

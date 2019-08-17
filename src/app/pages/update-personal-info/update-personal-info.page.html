@@ -9,130 +9,140 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding *ngIf="student">
+<ion-content padding>
 
-  <form [formGroup]="personalInfoForm"
-        (ngSubmit)="submitPersonalInfoForm()"
-        id="personal-info-form">
+  <ng-container *ngIf="student; else loading">
 
-    <ion-item-group>
+    <form [formGroup]="personalInfoForm"
+          (ngSubmit)="submitPersonalInfoForm()"
+          id="personal-info-form">
 
-      <ion-list-header>
-        <ion-label>{{ 'PERSONAL_INFO' | translate }}</ion-label>
-      </ion-list-header>
+      <ion-item-group>
 
-      <ion-item [ngClass]="getItemCssClass('firstName')">
-        <ion-label position="stacked">
-          {{ student.getAttributeLabel('firstName') }}
-        </ion-label>
-        <ion-input type="text" formControlName="firstName">
-        </ion-input>
-      </ion-item>
+        <ion-list-header>
+          <ion-label>{{ 'PERSONAL_INFO' | translate }}</ion-label>
+        </ion-list-header>
 
-      <ion-item [ngClass]="getItemCssClass('lastName')">
-        <ion-label position="stacked">{{ student.getAttributeLabel('lastName') }}</ion-label>
-        <ion-input type="text" formControlName="lastName"></ion-input>
-      </ion-item>
+        <ion-item [ngClass]="getItemCssClass('firstName')">
+          <ion-label position="stacked">
+            {{ student.getAttributeLabel('firstName') }}
+          </ion-label>
+          <ion-input type="text" formControlName="firstName">
+          </ion-input>
+        </ion-item>
 
-      <ion-item [ngClass]="getItemCssClass('citizenship')">
-        <ion-label position="stacked">{{ student.getAttributeLabel('citizenship') }}</ion-label>
-        <ion-input type="text" formControlName="citizenship"></ion-input>
-      </ion-item>
+        <ion-item [ngClass]="getItemCssClass('lastName')">
+          <ion-label position="stacked">{{ student.getAttributeLabel('lastName') }}</ion-label>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+        </ion-item>
 
-      <ion-item [ngClass]="getItemCssClass('travelDocument')">
-        <ion-label position="stacked">{{ student.getAttributeLabel('travelDocument') }}</ion-label>
-        <ion-input type="text" formControlName="travelDocument"></ion-input>
-      </ion-item>
+        <ion-item [ngClass]="getItemCssClass('citizenship')">
+          <ion-label position="stacked">{{ student.getAttributeLabel('citizenship') }}</ion-label>
+          <ion-input type="text" formControlName="citizenship"></ion-input>
+        </ion-item>
 
-      <ion-item [ngClass]="getItemCssClass('gender')">
-        <ion-label position="stacked">{{ student.getAttributeLabel('gender') }}</ion-label>
-        <ion-select formControlName="gender"
-                    okText="{{ 'OK' | translate }}"
-                    cancelText="{{ 'CANCEL' | translate }}"
-                    placeholder="{{ 'GENDER' | translate }}">
-          <ion-select-option value="0">{{ "G.0" | translate }}</ion-select-option>
-          <ion-select-option value="1">{{ "G.1" | translate }}</ion-select-option>
-          <ion-select-option value="2">{{ "G.2" | translate }}</ion-select-option>
-          <ion-select-option value="3">{{ "G.3" | translate }}</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item [ngClass]="getItemCssClass('travelDocument')">
+          <ion-label position="stacked">{{ student.getAttributeLabel('travelDocument') }}</ion-label>
+          <ion-input type="text" formControlName="travelDocument"></ion-input>
+        </ion-item>
 
-      <ion-item [ngClass]="getItemCssClass('dob')">
-        <ion-label position="stacked">{{ student.getAttributeLabel('dob') }}</ion-label>
-        <ion-datetime formControlName="dob" placeholder="Select DOB"></ion-datetime>
-      </ion-item>
+        <ion-item [ngClass]="getItemCssClass('gender')">
+          <ion-label position="stacked">{{ student.getAttributeLabel('gender') }}</ion-label>
+          <ion-select formControlName="gender"
+                      okText="{{ 'OK' | translate }}"
+                      cancelText="{{ 'CANCEL' | translate }}"
+                      placeholder="{{ 'GENDER' | translate }}">
+            <ion-select-option value="0">{{ "G.0" | translate }}</ion-select-option>
+            <ion-select-option value="1">{{ "G.1" | translate }}</ion-select-option>
+            <ion-select-option value="2">{{ "G.2" | translate }}</ion-select-option>
+            <ion-select-option value="3">{{ "G.3" | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-    </ion-item-group>
-    
-    <ion-item-group>
-      
-      <ion-list-header>{{ 'HEALTH' | translate }}</ion-list-header>
+        <ion-item [ngClass]="getItemCssClass('dob')">
+          <ion-label position="stacked">{{ student.getAttributeLabel('dob') }}</ion-label>
+          <ion-datetime formControlName="dob" placeholder="Select DOB"></ion-datetime>
+        </ion-item>
 
-      <ion-item  [ngClass]="getItemCssClass('dietaryRequirements')">
-        <ion-label position="floating">
-          {{ 'DIETARY_REQUIREMENTS' | translate }}</ion-label>
-        <ion-select formControlName="dietaryRequirements">
-          <ion-select-option>{{ "DR.0" | translate }}</ion-select-option>
-          <ion-select-option>{{ "DR.2" | translate }}</ion-select-option>
-          <ion-select-option>{{ "DR.3" | translate }}</ion-select-option>
-          <ion-select-option>{{ "DR.4" | translate }}</ion-select-option>
-          <ion-select-option>{{ "DR.5" | translate }}</ion-select-option>
-          <ion-select-option>{{ "DR.1" | translate }}</ion-select-option>
-        </ion-select>
-      </ion-item>
+      </ion-item-group>
 
-      <ion-item *ngIf="personalInfoForm.value.dietaryRequirements &&
-        personalInfoForm.value.dietaryRequirements.includes('Other')">
-        <ion-label position="floating">
-          {{ 'SPECIFY_DIETARY_REQUIREMENTS' | translate }}</ion-label>
-        <ion-textarea
-          formControlName="dietaryRequirementsOther">
-        </ion-textarea>
-      </ion-item>
-      
-    </ion-item-group>
-    
-    <ion-item-group>
-      
-      <ion-list-header>
-        <ion-label>{{ 'LEGAL' | translate }}</ion-label>
-      </ion-list-header>
+      <ion-item-group>
 
-      <ion-item>
-        <ion-label position="stacked">{{ student.getAttributeLabel('guardianName') }}</ion-label>
-        <ion-input type="text" formControlName="guardianName"></ion-input>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label position="stacked">
-          {{ 'INSURANCE_STATUS' | translate }}
-          <ion-icon name="help" (click)="showInsuranceHelpModal()"></ion-icon>
-        </ion-label>
-        <ion-select formControlName="insurance">
-          <ion-select-option value=0>{{ "I.0" | translate }}</ion-select-option>
-          <ion-select-option value=1>{{ "I.1" | translate }}</ion-select-option>
-          <ion-select-option value=2>{{ "I.2" | translate }}</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-list-header>{{ 'HEALTH' | translate }}</ion-list-header>
 
-      <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
-        <ion-label position="stacked">{{ student.getAttributeLabel('insuranceName') }}</ion-label>
-        <ion-input type="text" formControlName="insuranceName"></ion-input>
-      </ion-item>
+        <ion-item  [ngClass]="getItemCssClass('dietaryRequirements')">
+          <ion-label position="floating">
+            {{ 'DIETARY_REQUIREMENTS' | translate }}</ion-label>
+          <ion-select formControlName="dietaryRequirements">
+            <ion-select-option>{{ "DR.0" | translate }}</ion-select-option>
+            <ion-select-option>{{ "DR.2" | translate }}</ion-select-option>
+            <ion-select-option>{{ "DR.3" | translate }}</ion-select-option>
+            <ion-select-option>{{ "DR.4" | translate }}</ion-select-option>
+            <ion-select-option>{{ "DR.5" | translate }}</ion-select-option>
+            <ion-select-option>{{ "DR.1" | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-      <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
-        <ion-label position="stacked">{{ student.getAttributeLabel('insurancePolicyNumber') }}</ion-label>
-        <ion-input type="text" formControlName="insurancePolicyNumber"></ion-input>
-      </ion-item>
-      
-    </ion-item-group>
+        <ion-item *ngIf="personalInfoForm.value.dietaryRequirements &&
+          personalInfoForm.value.dietaryRequirements.includes('Other')">
+          <ion-label position="floating">
+            {{ 'SPECIFY_DIETARY_REQUIREMENTS' | translate }}</ion-label>
+          <ion-textarea
+            formControlName="dietaryRequirementsOther">
+          </ion-textarea>
+        </ion-item>
 
-    <ion-button type="submit" expand="full"
-                [disabled]="!personalInfoForm.valid"
-                id="submit-personal-info-button">
-      {{ 'UPDATE' | translate }}
-    </ion-button>
+      </ion-item-group>
 
-  </form>
+      <ion-item-group>
+
+        <ion-list-header>
+          <ion-label>{{ 'LEGAL' | translate }}</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label position="stacked">{{ student.getAttributeLabel('guardianName') }}</ion-label>
+          <ion-input type="text" formControlName="guardianName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">
+            {{ 'INSURANCE_STATUS' | translate }}
+            <ion-icon name="help" (click)="showInsuranceHelpModal()"></ion-icon>
+          </ion-label>
+          <ion-select formControlName="insurance">
+            <ion-select-option value=0>{{ "I.0" | translate }}</ion-select-option>
+            <ion-select-option value=1>{{ "I.1" | translate }}</ion-select-option>
+            <ion-select-option value=2>{{ "I.2" | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
+          <ion-label position="stacked">{{ student.getAttributeLabel('insuranceName') }}</ion-label>
+          <ion-input type="text" formControlName="insuranceName"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="personalInfoForm.value.insurance && personalInfoForm.value.insurance !== '0'">
+          <ion-label position="stacked">{{ student.getAttributeLabel('insurancePolicyNumber') }}</ion-label>
+          <ion-input type="text" formControlName="insurancePolicyNumber"></ion-input>
+        </ion-item>
+
+      </ion-item-group>
+
+      <ion-button type="submit" expand="full"
+                  [disabled]="!personalInfoForm.valid"
+                  id="submit-personal-info-button">
+        {{ 'UPDATE' | translate }}
+      </ion-button>
+
+    </form>
+
+  </ng-container>
+
+  <ng-template #loading>
+
+    <app-loading-spinner-content></app-loading-spinner-content>
+
+  </ng-template>
 
 </ion-content>
