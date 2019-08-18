@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
         component: HomePage
       }
     ]),
-    TranslateModule
+    TranslateModule,
+    MarkdownToHtmlModule
   ],
   declarations: [HomePage]
 })

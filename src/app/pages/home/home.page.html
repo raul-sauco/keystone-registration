@@ -10,13 +10,22 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
+
+  <div id="home-card-container">
+
+    <ion-card *ngFor="let card of cards">
+
+      <img [src]="card.imageurl">
+
       <ion-card-header>
-        <ion-card-subtitle>Let's Get Started</ion-card-subtitle>
-        <ion-card-title>{{ 'WELCOME_TO_KA' | translate }}</ion-card-title>
+        <ion-card-title>{{ card.title | translate }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p>Slowly the app will grow as we add content.</p>
+
+      <ion-card-content [innerHTML]="card.content | translate | MarkdownToHtml ">
       </ion-card-content>
+
     </ion-card>
+
+  </div>
+
 </ion-content>

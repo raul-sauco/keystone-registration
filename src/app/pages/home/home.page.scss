@@ -1,1 +1,31 @@
+div#home-card-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+ion-card {
+  width: 100%;
+  ion-card-title {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+  }
+  ion-card-content ::ng-deep p {
+    margin-bottom: 0.6rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  ion-card {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  ion-card {
+    width: 30%;
+  }
+}
