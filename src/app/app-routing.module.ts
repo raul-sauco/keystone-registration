@@ -72,7 +72,19 @@ const routes: Routes = [
     loadChildren: './pages/personal-info/personal-info.module#PersonalInfoPageModule',
     canActivate: [AuthGuard]
   },
-  { path: 'update-personal-info', loadChildren: './pages/update-personal-info/update-personal-info.module#UpdatePersonalInfoPageModule' }
+  {
+    path: 'update-personal-info',
+    loadChildren: './pages/update-personal-info/update-personal-info.module#UpdatePersonalInfoPageModule'
+  },
+  {
+    path: 'reset-password/:token',
+    loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule',
+    canActivate: [NoAuthGuard]
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+  }
 ];
 
 @NgModule({
