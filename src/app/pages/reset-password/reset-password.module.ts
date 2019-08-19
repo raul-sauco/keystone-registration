@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ResetPasswordPage } from './reset-password.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingSpinnerContentModule } from '../../components/loading-spinner-content/loading-spinner-content.module';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
+    LoadingSpinnerContentModule
   ],
   declarations: [ResetPasswordPage]
 })

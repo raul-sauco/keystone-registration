@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner-content',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading-spinner-content.component.scss'],
 })
 export class LoadingSpinnerContentComponent implements OnInit {
+
+  @Input() message = 'LOADING';
 
   constructor() { }
 
