@@ -17,6 +17,7 @@
   "CANCEL": "取消",
   "CHALLENGE_BY_CHOICE": "Accept and Overcome Challenges",
   "CITIZENSHIP": "国籍",
+  "COUNTRY_OF_CITIZENSHIP": "Country of citizenship",
   "DATE": "日期",
   "DATE_NOT_MATCH_TODAY": "输入的日期 '{{formDate}}' 必须和今日日期一致'{{today}}'",
   "DETAILS_UPDATED": "The details were successfully updated",
@@ -135,7 +136,7 @@
   "STRONG_PASSWORD": "请您在下方设置一个至少有8位字符的密码，以便我们更好地保护您的个人信息和隐私，方便您日后再次登陆。",
   "SUCCESS": "成功",
   "TRAVEL_DOCUMENT": "旅行证件",
-  "TRAVEL_DOCUMENT_NUMBER": "护照/身份证",
+  "TRAVEL_DOCUMENT_NUMBER": "护照/身份证号码",
   "TRIP": "行程",
   "TRIP_ID": "行程代码",
   "TRY_AGAIN_LATER": "请稍后重试",
@@ -149,6 +150,6 @@
   "WHAT_IS_THIS": "What is this?",
   "WHERE_TO_GET_THE_CODES": "Where do I find the codes?",
   "WRITE_QUESTION_HERE": "请在此写下您的问题...",
-  "WRITE_YOUR_USER_NAME_SOMEWHERE": "您的用户名为<strong>{{name}}</strong>，请妥善记录下来，以便将来您在本台设备上或其他电子设备上再次登陆之需。",
+  "WRITE_YOUR_USER_NAME_SOMEWHERE": "您的用户名为<strong>{{name}}</strong>，请妥善记录下来，以便将来您在本台设备上或其他电子设备上再次登陆之需。</br>Almost done, we just need to get a few details from you</br>You can stop at any time and continue later, data entered will be saved automatically",
   "YES": "是的"
 }

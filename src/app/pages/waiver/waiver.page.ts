@@ -6,6 +6,8 @@ import { ApiService } from '../../services/api/api.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Student } from '../../models/student';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-waiver',
@@ -15,11 +17,14 @@ import { Router } from '@angular/router';
 export class WaiverPage implements OnInit {
 
   public waiverForm: FormGroup;
-  private today: string;
+  public today: string;
+  public student: Student = null;
+  public student$;
 
   constructor(
     private api: ApiService,
     private auth: AuthService,
+    private studentService: StudentService,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
@@ -28,6 +33,10 @@ export class WaiverPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.student = this.studentService.getStudent();
+    this.student$ = this.studentService.student$.subscribe(
+      val => { this.student = val; }
+    );
     this.today = new Date().toISOString().split('T')[0];
     this.initWaiverForm();
   }
@@ -41,7 +50,7 @@ export class WaiverPage implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       guardianName: ['', Validators.required],
-      date: ['', Validators.required]
+      date: [this.today, Validators.required]
     });
 
   }
@@ -54,7 +63,9 @@ export class WaiverPage implements OnInit {
     const params = {
         waiver_accepted: true,
         waiver_signed_on: this.waiverForm.value.date.split('T')[0],
-        guardian_name: this.waiverForm.value.guardianName
+        guardian_name: this.waiverForm.value.guardianName,
+        first_name: this.waiverForm.value.firstName,
+        last_name: this.waiverForm.value.lastName
       },
       endpoint = 'students/' + this.auth.getCredentials().studentId,
       options = {
@@ -70,10 +81,10 @@ export class WaiverPage implements OnInit {
 
     await loading.present();
 
-    console.log(JSON.stringify(params));
-
     this.api.patch(endpoint, params, options).subscribe(
       async res => {
+
+        this.studentService.updateStudentFromJson(res);
 
         await loading.dismiss();
 
@@ -81,14 +92,14 @@ export class WaiverPage implements OnInit {
           header: this.translate.instant('SUCCESS'),
           subHeader: this.translate.instant('DETAILS_UPDATED'),
           message: this.translate.instant('WAIVER_HAS_BEEN_ACCEPTED'),
-          buttons: [{
-            text: this.translate.instant('OK'),
-            role: 'accept',
-            handler: () => {
-              this.router.navigateByUrl('/home');
-            }
-          }]
+          buttons: [this.translate.instant('OK')]
         });
+
+        if (this.student.isAttributeEmpty('citizenship') ||
+          this.student.isAttributeEmpty('travelDocument') ||
+          this.student.isAttributeEmpty('dob')) {
+          this.router.navigateByUrl('/update-personal-info');
+        }
 
         await alert.present();
 

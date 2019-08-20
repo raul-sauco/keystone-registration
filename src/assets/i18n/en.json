@@ -17,6 +17,7 @@
   "CANCEL": "Cancel",
   "CHALLENGE_BY_CHOICE": "Accept and Overcome Challenges",
   "CITIZENSHIP": "Citizenship",
+  "COUNTRY_OF_CITIZENSHIP": "Country of citizenship",
   "DATE": "Date",
   "DATE_NOT_MATCH_TODAY": "The date entered '{{formDate}}' should match today's date '{{today}}'",
   "DETAILS_UPDATED": "The details were successfully updated",
@@ -136,7 +137,7 @@
   "STRONG_PASSWORD": "So that we can verify your identity and protect your privacy when you login in the future, you will need to enter in a password below, which should be at least 8 characters long.",
   "SUCCESS": "Success",
   "TRAVEL_DOCUMENT": "Travel document",
-  "TRAVEL_DOCUMENT_NUMBER": "Passport/ID",
+  "TRAVEL_DOCUMENT_NUMBER": "Passport/ID number",
   "TRIP": "Trip",
   "TRIP_ID": "Trip Code",
   "TRY_AGAIN_LATER": "Please, try again later",
@@ -150,6 +151,6 @@
   "WHAT_IS_THIS": "What is this?",
   "WHERE_TO_GET_THE_CODES": "Where do I find the codes?",
   "WRITE_QUESTION_HERE": "Write your question here...",
-  "WRITE_YOUR_USER_NAME_SOMEWHERE": "Your user name is <strong>{{name}}</strong>, write it down somewhere in case you need to login in the future, via this device or a different one",
+  "WRITE_YOUR_USER_NAME_SOMEWHERE": "<p>Your user name is <strong>{{name}}</strong>, write it down somewhere in case you need to login in the future, via this device or a different one</p><p><strong>Almost done!</strong> We just need to get a few details from you</p><p>You can stop at any time and continue later, any data entered will be saved automatically</p>",
   "YES": "Yes"
 }

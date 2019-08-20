@@ -43,11 +43,11 @@ export class Student {
    */
   private getTranslations() {
     this.translate.get([
-      'ID', 'FIRST_NAME', 'LAST_NAME', 'CITIZENSHIP', 'TRAVEL_DOCUMENT',
+      'ID', 'FIRST_NAME', 'LAST_NAME', 'CITIZENSHIP', 'TRAVEL_DOCUMENT', 'TRAVEL_DOCUMENT_NUMBER',
       'GENDER', 'G', 'DOB', 'GUARDIAN_NAME', 'WAIVER_ACCEPTED', 'WAIVER_SIGNED_ON',
       'DR', 'DIETARY_REQUIREMENTS', 'DIETARY_REQUIREMENTS_OTHER', 'ALLER', 'ALLERGIES',
       'ALLERGIES_OTHER', 'MEDICAL_INFORMATION', 'INSURANCE', 'I', 'INSURANCE_NAME',
-      'INSURANCE_POLICY_NUMBER', 'YES', 'NO', 'EMPTY'
+      'INSURANCE_POLICY_NUMBER', 'YES', 'NO', 'EMPTY', 'COUNTRY_OF_CITIZENSHIP'
     ]).subscribe(
       res => this.translations = res
     );
@@ -94,8 +94,8 @@ export class Student {
       id: this.translations.ID,
       firstName: this.translations.FIRST_NAME,
       lastName: this.translations.LAST_NAME,
-      citizenship: this.translations.CITIZENSHIP,
-      travelDocument: this.translations.TRAVEL_DOCUMENT,
+      citizenship: this.translations.COUNTRY_OF_CITIZENSHIP,
+      travelDocument: this.translations.TRAVEL_DOCUMENT_NUMBER,
       gender: this.translations.GENDER,
       dob: this.translations.DOB,
       guardianName: this.translations.GUARDIAN_NAME,

@@ -174,63 +174,79 @@
 
   </div>
 
-  <form [formGroup]="waiverForm"
-        (ngSubmit)="acceptWaiver()"
-        id="waiver-form">
+  <ng-container *ngIf="student; else loading">
 
-    <ion-item>
+    <form [formGroup]="waiverForm" *ngIf="!student.waiverAccepted; else acceptedOn"
+          (ngSubmit)="acceptWaiver()"
+          id="waiver-form">
 
-      <ion-label position="floating">
-        {{ 'DATE' | translate }}
-      </ion-label>
+      <ion-item>
 
-      <ion-datetime doneText="{{ 'DONE' | translate }}"
-                    cancelText="{{ 'CANCEL' | translate }}"
-                    formControlName="date">
-      </ion-datetime>
+        <ion-label position="floating">
+          {{ 'DATE' | translate }}
+        </ion-label>
 
-    </ion-item>
+        <ion-datetime doneText="{{ 'DONE' | translate }}"
+                      cancelText="{{ 'CANCEL' | translate }}"
+                      formControlName="date">
+        </ion-datetime>
 
-    <ion-item>
+      </ion-item>
 
-      <ion-label position="floating">
-        {{ 'FIRST_NAME' | translate }}
-      </ion-label>
+      <ion-item>
 
-      <ion-input type="text" required
-                 formControlName="firstName">
-      </ion-input>
+        <ion-label position="floating">
+          {{ 'FIRST_NAME' | translate }}
+        </ion-label>
 
-    </ion-item>
+        <ion-input type="text" required
+                   formControlName="firstName">
+        </ion-input>
 
-    <ion-item>
+      </ion-item>
 
-      <ion-label position="floating">
-        {{ 'LAST_NAME' | translate }}
-      </ion-label>
+      <ion-item>
 
-      <ion-input type="text" required
-                 formControlName="lastName">
-      </ion-input>
+        <ion-label position="floating">
+          {{ 'LAST_NAME' | translate }}
+        </ion-label>
 
-    </ion-item>
+        <ion-input type="text" required
+                   formControlName="lastName">
+        </ion-input>
 
-    <ion-item>
+      </ion-item>
 
-      <ion-label position="floating">
-        {{ 'PARENT_GUARDIAN' | translate }}
-      </ion-label>
+      <ion-item>
 
-      <ion-input type="text"
-                 formControlName="guardianName">
-      </ion-input>
+        <ion-label position="floating">
+          {{ 'PARENT_GUARDIAN' | translate }}
+        </ion-label>
 
-    </ion-item>
+        <ion-input type="text"
+                   formControlName="guardianName">
+        </ion-input>
 
-    <ion-button type="submit" [disabled]="!waiverForm.valid">
-      {{ 'ACCEPT' | translate }}
-    </ion-button>
+      </ion-item>
 
-  </form>
+      <ion-button type="submit" [disabled]="!waiverForm.valid">
+        {{ 'ACCEPT' | translate }}
+      </ion-button>
+
+    </form>
+
+    <ng-template #acceptedOn>
+
+      <p>
+        {{ 'WAIVER_SIGNED_ON' | translate }} <strong>{{ student.waiverSignedOn | date }}</strong>.
+      </p>
+
+    </ng-template>
+
+  </ng-container>
+
+  <ng-template #loading>
+    {{ 'LOADING' | translate }}
+  </ng-template>
 
 </ion-content>
