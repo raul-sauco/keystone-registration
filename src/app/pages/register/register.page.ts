@@ -44,6 +44,9 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.reg.code || !this.reg.tripId) {
+      this.router.navigateByUrl('/trip-codes');
+    }
     this.initUserRegistrationForm();
   }
 
@@ -91,6 +94,7 @@ export class RegisterPage implements OnInit {
 
         if (response.error === true) {
 
+          // todo improve error report
           await loading.dismiss();
           await this.displayError(JSON.stringify(response.errors));
 
@@ -138,12 +142,10 @@ export class RegisterPage implements OnInit {
       message: this.translate.instant('WRITE_YOUR_USER_NAME_SOMEWHERE', {
         name: this.auth.getCredentials().userName
       }),
-      buttons: [{
-        text: this.translate.instant('OK'),
-        role: 'accept',
-        handler: () => { this.router.navigateByUrl('/home'); }
-      }]
+      buttons: [this.translate.instant('OK')]
     });
+
+    this.router.navigateByUrl('/waiver');
 
     await alert.present();
   }

@@ -36,9 +36,10 @@
         {{ 'SEND' | translate }}
       </ion-button>
 
-      <ion-button (click)="showHelp()" fill="clear" class="help-link">
-        {{ 'HELP' | translate }}
-      </ion-button>
+      <div class="navigation-links">
+        <a routerLink="/login">{{ 'LOGIN' | translate }}</a> /
+        <a (click)="showHelp()">{{ 'HELP' | translate }}</a>
+      </div>
 
     </form>
 

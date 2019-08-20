@@ -41,7 +41,11 @@ ion-button {
   margin-top: 1rem;
 }
 
-.help-link {
-  color: var(--ion-color-secondary);
-  text-transform: capitalize;
+.navigation-links {
+  margin-top: 1rem;
+  a {
+    color: var(--ion-color-secondary);
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
