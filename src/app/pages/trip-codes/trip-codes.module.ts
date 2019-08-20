@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { TripCodesPage } from './trip-codes.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { TripCodesHelpComponentModule } from '../../components/help-pages/trip-codes-help/trip-codes-help.module';
+import { TripCodesHelpComponent } from '../../components/help-pages/trip-codes-help/trip-codes-help.component';
 
 const routes: Routes = [
   {
@@ -16,13 +18,17 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    TripCodesHelpComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
+    TripCodesHelpComponentModule
   ],
   declarations: [TripCodesPage]
 })

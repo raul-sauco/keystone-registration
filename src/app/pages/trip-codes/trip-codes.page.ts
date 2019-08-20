@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../../services/registration/registration.service';
+import { TripCodesHelpComponent } from '../../components/help-pages/trip-codes-help/trip-codes-help.component';
 
 @Component({
   selector: 'app-trip-codes',
@@ -23,6 +24,7 @@ export class TripCodesPage implements OnInit {
     private translate: TranslateService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private modalCtrl: ModalController,
     private router: Router
   ) { }
 
@@ -137,4 +139,19 @@ export class TripCodesPage implements OnInit {
     );
   }
 
+  /**
+   * Show an alert with information about the security codes.
+   */
+  async showHelp() {
+
+    const modal = await this.modalCtrl.create({
+      component: TripCodesHelpComponent,
+      componentProps: {
+        language: this.translate.currentLang
+      }
+    });
+
+    await modal.present();
+
+  }
 }

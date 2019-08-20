@@ -52,6 +52,7 @@
   "GOT_IT": "Got It",
   "GUARDIAN_NAME": "家长/法定监护人姓名",
   "GUIDES": "教练",
+  "HELP": "Help",
   "HOME": "主页",
   "HOME_CARD_CHALLENGE": "While Keystone Adventures programs are designed to be accessible to participants with no previous experience, they are also intended to be challenging.\n\nParticipants can expect to push themselves physically in order to overcome these challenges. In achieving success, students will gain personal confidence and self-esteem and become open to wider opportunities and life chances.",
   "HOME_CARD_LOCATIONS": "Due to extensive experience and deep relationships within the industry, we are proud to offer programs in more than a dozen domestic provinces, as well as in a handful of countries in greater Asia and the rest of the world.",
@@ -145,6 +146,8 @@
   "WAIVER_HAS_BEEN_ACCEPTED": "We updated your details to reflect that you accepted the waiver conditions",
   "WAIVER_SIGNED_ON": "Waiver signed on",
   "WELCOME_TO_KA": "欢迎来到卡赛探险",
+  "WHAT_IS_THIS": "What is this?",
+  "WHERE_TO_GET_THE_CODES": "Where do I find the codes?",
   "WRITE_QUESTION_HERE": "请在此写下您的问题...",
   "WRITE_YOUR_USER_NAME_SOMEWHERE": "您的用户名为<strong>{{name}}</strong>，请妥善记录下来，以便将来您在本台设备上或其他电子设备上再次登陆之需。",
   "YES": "是的"

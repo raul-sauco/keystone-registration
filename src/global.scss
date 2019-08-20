@@ -29,3 +29,10 @@ ion-toolbar {
   --background: -webkit-gradient(linear,left top,left bottom,from(#2a872b),color-stop(#36ae37),to(#2a872b));
   --background: linear-gradient(#2a872b,#36ae37,#2a872b);
 }
+
+.help-modal-content {
+  h2 {
+    font-size: 1.3rem;
+    color: var(--ion-color-primary);
+  }
+}

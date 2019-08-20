@@ -52,6 +52,8 @@
   "GOT_IT": "Got It",
   "GUARDIAN_NAME": "Parent / Guardian name",
   "GUIDES": "Guides",
+  "HELP": "Help",
+  "HELP_SECURITY_CODES": "<p>Keystone Adventures sends the codes to the school at the same time as we send the link.</p><p>If you didn't receive the codes yet, ask the trip organizer.</p><h2>What do the codes look like?</h2><p>The trip code is all digits, usually 3 in length, something like <em>143</em></p>",
   "HOME": "Home",
   "HOME_CARD_CHALLENGE": "While Keystone Adventures programs are designed to be accessible to participants with no previous experience, they are also intended to be challenging.\n\nParticipants can expect to push themselves physically in order to overcome these challenges. In achieving success, students will gain personal confidence and self-esteem and become open to wider opportunities and life chances.",
   "HOME_CARD_LOCATIONS": "Due to extensive experience and deep relationships within the industry, we are proud to offer programs in more than a dozen domestic provinces, as well as in a handful of countries in greater Asia and the rest of the world.",
@@ -145,6 +147,8 @@
   "WAIVER_HAS_BEEN_ACCEPTED": "We updated your details to reflect that you accepted the waiver conditions",
   "WAIVER_SIGNED_ON": "Waiver signed on",
   "WELCOME_TO_KA": "Welcome to Keystone Adventures",
+  "WHAT_IS_THIS": "What is this?",
+  "WHERE_TO_GET_THE_CODES": "Where do I find the codes?",
   "WRITE_QUESTION_HERE": "Write your question here...",
   "WRITE_YOUR_USER_NAME_SOMEWHERE": "Your user name is <strong>{{name}}</strong>, write it down somewhere in case you need to login in the future, via this device or a different one",
   "YES": "Yes"
