@@ -83,7 +83,8 @@ const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule',
+    canActivate: [NoAuthGuard]
   }
 ];
 
