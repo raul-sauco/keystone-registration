@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { RegistrationService } from '../../services/registration/registration.service';
 import { TripCodesHelpComponent } from '../../components/help-pages/trip-codes-help/trip-codes-help.component';
 
@@ -15,6 +15,7 @@ import { TripCodesHelpComponent } from '../../components/help-pages/trip-codes-h
 export class TripCodesPage implements OnInit {
 
   public tripCodeForm: FormGroup;
+  public tripId: string = null;
   private translations: any;
 
   constructor(
@@ -25,12 +26,18 @@ export class TripCodesPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private modalCtrl: ModalController,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(
+      (params: ParamMap) => {
+        this.tripId = params.get('id');
+        this.initTripCodeForm();
+      }
+    );
     this.getTranslations();
-    this.initTripCodeForm();
   }
 
   /**
@@ -56,7 +63,10 @@ export class TripCodesPage implements OnInit {
    */
   initTripCodeForm() {
     this.tripCodeForm = this.formBuilder.group({
-      tripId: ['', Validators.required],
+      tripId: [{
+        value: this.tripId,
+        disabled: this.tripId
+      }, Validators.required],
       code: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(6),
@@ -72,7 +82,7 @@ export class TripCodesPage implements OnInit {
   async submitTripCodes() {
 
     const params = {
-        id: this.tripCodeForm.value.tripId,
+        id: this.tripId || this.tripCodeForm.value.tripId,
         code: this.tripCodeForm.value.code,
         lang: this.translate.currentLang
       },
@@ -86,6 +96,8 @@ export class TripCodesPage implements OnInit {
 
     this.api.post(endpoint, params).subscribe(
       async (response: any) => {
+
+        await loading.dismiss();
 
         if (response.error === false) {
 
@@ -122,6 +134,8 @@ export class TripCodesPage implements OnInit {
 
       }, async () => {
 
+        await loading.dismiss();
+
         this.tripCodeForm.reset();
 
         const alert = await this.alertCtrl.create({
@@ -133,8 +147,6 @@ export class TripCodesPage implements OnInit {
 
         await alert.present();
 
-      }, async () => {
-        await loading.dismiss();
       }
     );
   }

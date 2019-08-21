@@ -52,7 +52,6 @@ export class ResetPasswordPage implements OnInit {
         this.validateToken();
         this.initPasswordResetForm();
       }
-      // todo check if token is still valid
     );
   }
 

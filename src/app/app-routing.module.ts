@@ -59,6 +59,11 @@ const routes: Routes = [
     canActivate: [NoAuthGuard]
   },
   {
+    path: 'trip-codes/:id',
+    loadChildren: './pages/trip-codes/trip-codes.module#TripCodesPageModule',
+    canActivate: [NoAuthGuard]
+  },
+  {
     path: 'privacy-policy',
     loadChildren: './pages/privacy-policy/privacy-policy.module#PrivacyPolicyPageModule'
   },
