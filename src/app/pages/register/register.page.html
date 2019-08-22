@@ -27,6 +27,8 @@
 
       <ion-item>
 
+        <ion-spinner slot="end" *ngIf="username.pending"></ion-spinner>
+
         <ion-label position="floating">
           {{ 'USERNAME' | translate }} <span class="required">*</span>
         </ion-label>
@@ -42,8 +44,8 @@
             {{ 'THIS_FIELD_IS_REQUIRED' | translate }}
           </div>
 
-          <div *ngIf="password.errors?.minlength"><!-- todo async validation username taken -->
-            {{ 'MIN_LENGTH_8_CHAR' | translate }}
+          <div *ngIf="username.errors?.uniqueUsername">
+            {{ 'USERNAME_IS_TAKEN' | translate }}
           </div>
 
         </div>

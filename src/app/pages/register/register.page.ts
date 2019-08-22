@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from '../../services/registration/registration.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
@@ -8,6 +8,7 @@ import { Credentials } from '../../models/credentials';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { passwordMatchValidator } from '../../directives/password-match-validator.directive';
+import { UniqueUsernameValidator } from '../../directives/unique-username-validator.directive';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,8 @@ export class RegisterPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private router: Router,
-    public reg: RegistrationService
+    public reg: RegistrationService,
+    private usernameValidator: UniqueUsernameValidator
   ) {}
 
   ngOnInit() {
@@ -43,7 +45,11 @@ export class RegisterPage implements OnInit {
    */
   initUserRegistrationForm(): void {
     this.userRegistrationForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: new FormControl('', {
+        validators: [Validators.required],
+        asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
+        updateOn: 'blur'
+      }),
       email: ['', Validators.minLength(6)], // todo validate emails
       password: ['', Validators.compose([
         Validators.required,

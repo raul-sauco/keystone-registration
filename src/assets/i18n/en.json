@@ -146,6 +146,7 @@
   "TRY_AGAIN_LATER": "Please, try again later",
   "UPDATE_PERSONAL_INFO": "Update personal information",
   "USERNAME": "Username",
+  "USERNAME_IS_TAKEN": "Username is taken",
   "VALIDATING_TOKEN": "Validating reset token",
   "WAIVER_ACCEPTED": "Waiver accepted",
   "WAIVER_HAS_BEEN_ACCEPTED": "We updated your details to reflect that you accepted the waiver conditions",

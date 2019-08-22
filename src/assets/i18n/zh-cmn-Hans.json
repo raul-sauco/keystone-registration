@@ -145,6 +145,7 @@
   "TRY_AGAIN_LATER": "请稍后重试",
   "UPDATE_PERSONAL_INFO": "更新个人信息",
   "USERNAME": "用户名",
+  "USERNAME_IS_TAKEN": "Username is taken",
   "VALIDATING_TOKEN": "Validating reset token",
   "WAIVER_ACCEPTED": "Waiver accepted",
   "WAIVER_HAS_BEEN_ACCEPTED": "We updated your details to reflect that you accepted the waiver conditions",
