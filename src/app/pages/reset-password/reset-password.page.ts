@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { passwordMatchValidator } from '../../directives/password-match-validator.directive';
 
 @Component({
   selector: 'app-reset-password',
@@ -27,23 +28,6 @@ export class ResetPasswordPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
-
-  /**
-   * Validate if the passwords are identical, fail otherwise.
-   * todo extract this method and RegisterPage into a class
-   * todo display error message if not match
-   */
-  static passwordMatchValidator(g: FormGroup) {
-
-    if (g.get('password').value.length < 8) {
-
-      return {too_short: true};
-
-    }
-
-    return g.get('password').value === g.get('passwordRepeat').value
-      ? null : {mismatch: true};
-  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(
@@ -93,13 +77,16 @@ export class ResetPasswordPage implements OnInit {
         Validators.required,
         Validators.minLength(8)
       ])],
-      passwordRepeat: ['', Validators.compose([
+      passwordConfirm: ['', Validators.compose([
         Validators.required,
         Validators.minLength(8)
       ])]
-    }, {validator: ResetPasswordPage.passwordMatchValidator});
+    }, {validator: passwordMatchValidator});
 
   }
+
+  get password() { return this.passwordResetForm.get('password'); }
+  get passwordConfirm() { return this.passwordResetForm.get('passwordConfirm'); }
 
   async submitNewPassword() {
 

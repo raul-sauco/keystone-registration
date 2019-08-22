@@ -35,6 +35,19 @@
                    formControlName="username">
         </ion-input>
 
+        <div *ngIf="username.invalid && (username.dirty || username.touched )"
+             class="form-input-validation-error-messages">
+
+          <div *ngIf="username.errors?.required">
+            {{ 'THIS_FIELD_IS_REQUIRED' | translate }}
+          </div>
+
+          <div *ngIf="password.errors?.minlength"><!-- todo async validation username taken -->
+            {{ 'MIN_LENGTH_8_CHAR' | translate }}
+          </div>
+
+        </div>
+
       </ion-item>
 
       <ion-item>
@@ -59,6 +72,19 @@
                    formControlName="password">
         </ion-input>
 
+        <div *ngIf="password.invalid && (password.dirty || password.touched )"
+          class="form-input-validation-error-messages">
+
+          <div *ngIf="password.errors?.required">
+            {{ 'THIS_FIELD_IS_REQUIRED' | translate }}
+          </div>
+
+          <div *ngIf="password.errors?.minlength">
+            {{ 'MIN_LENGTH_8_CHAR' | translate }}
+          </div>
+
+        </div>
+
       </ion-item>
 
       <ion-item>
@@ -70,6 +96,27 @@
         <ion-input type="password" required minlength="8"
                    formControlName="passwordConfirm">
         </ion-input>
+
+        <div *ngIf="passwordConfirm.dirty || passwordConfirm.touched"
+             class="form-input-validation-error-messages">
+
+          <div *ngIf="passwordConfirm.invalid">
+
+            <div *ngIf="passwordConfirm.errors?.required">
+              {{ 'THIS_FIELD_IS_REQUIRED' | translate }}
+            </div>
+
+            <div *ngIf="passwordConfirm.errors?.minlength">
+              {{ 'MIN_LENGTH_8_CHAR' | translate }}
+            </div>
+
+          </div>
+
+          <div *ngIf="userRegistrationForm.errors?.passwordMismatch">
+            {{ 'PASSWORDS_DO_NOT_MATCH' | translate }}
+          </div>
+
+        </div>
 
       </ion-item>
 

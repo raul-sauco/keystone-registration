@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Credentials } from '../../models/credentials';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { passwordMatchValidator } from '../../directives/password-match-validator.directive';
 
 @Component({
   selector: 'app-register',
@@ -27,21 +28,6 @@ export class RegisterPage implements OnInit {
     private router: Router,
     public reg: RegistrationService
   ) {}
-
-  /**
-   * Validate if the passwords are identical, fail otherwise.
-   */
-  static passwordMatchValidator(g: FormGroup) {
-
-    if (g.get('password').value.length < 8) {
-
-      return {too_short: true};
-
-    }
-
-    return g.get('password').value === g.get('passwordConfirm').value
-      ? null : {mismatch: true};
-  }
 
   ngOnInit() {
     if (!this.reg.code || !this.reg.tripId) {
@@ -67,8 +53,13 @@ export class RegisterPage implements OnInit {
         Validators.required,
         Validators.minLength(8)
       ])]
-    }, {validator: RegisterPage.passwordMatchValidator});
+    }, {validator: passwordMatchValidator});
   }
+
+  get username() { return this.userRegistrationForm.get('username'); }
+  get password() { return this.userRegistrationForm.get('password'); }
+  get email() { return this.userRegistrationForm.get('email'); }
+  get passwordConfirm() { return this.userRegistrationForm.get('passwordConfirm'); }
 
   /**
    * POST user details to the server.

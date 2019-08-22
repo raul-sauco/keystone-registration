@@ -39,3 +39,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.3rem;
   }
 }
+
+.form-input-validation-error-messages {
+  font-size: 0.8rem;
+  color: var(--ion-color-danger);
+  background-color: rgba(250, 0, 0, 0.05);
+}
