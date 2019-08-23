@@ -87,8 +87,8 @@ export class TripService {
               this.trip = new Trip(response.trip);
 
               this.formatItinerary();
-              // TODO make sure this works
               this.fetchPackingListItems();
+              this.sortGuides();
 
               this.loading = false;
               this.ready = true;
@@ -129,12 +129,7 @@ export class TripService {
 
     });
 
-    // Order the events for each date
-    for (const dateKey in this.formattedItinerary) {
-      if (this.formattedItinerary.hasOwnProperty(dateKey)) {
-        // TODO order the events by start_time
-      }
-    }
+    this.sortEventsPerDate();
 
   }
 
@@ -179,6 +174,34 @@ export class TripService {
         });
 
       });
+
+  }
+
+  /**
+   * Sort the trip guides alphabetically.
+   */
+  sortGuides(): void {
+    this.trip.guides.sort( ( a, b ) => {
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  /**
+   * Sort all the events on each date per start time.
+   */
+  sortEventsPerDate() {
+
+    for (const dateKey in this.formattedItinerary) {
+
+      if (this.formattedItinerary.hasOwnProperty(dateKey)) {
+
+        this.formattedItinerary[dateKey].sort( ( a, b ) => {
+          return a.start_time.localeCompare(b.start_time);
+        });
+
+      }
+
+    }
 
   }
 }
