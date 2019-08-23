@@ -9,7 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="tripService.ready">
+<ion-content>
+
+  <ng-container *ngIf="tripService.ready; else loading">
+
+  </ng-container>
 
   <ion-list *ngFor="let itineraryDate of objectKeys(tripService.formattedItinerary)">
 
@@ -45,5 +49,11 @@
     </ion-item>
 
   </ion-list>
+
+  <ng-template #loading>
+
+    <app-loading-spinner-content></app-loading-spinner-content>
+
+  </ng-template>
 
 </ion-content>

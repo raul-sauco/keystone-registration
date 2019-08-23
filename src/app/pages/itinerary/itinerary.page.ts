@@ -8,7 +8,7 @@ import { TripService } from '../../services/trip/trip.service';
 })
 export class ItineraryPage implements OnInit {
 
-  protected objectKeys = Object.keys;
+  public objectKeys = Object.keys;
 
   constructor(
     public tripService: TripService

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { FaqPage } from './faq.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
+import { LoadingSpinnerContentModule } from '../../components/loading-spinner-content/loading-spinner-content.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     TranslateModule,
-    MarkdownToHtmlModule
+    MarkdownToHtmlModule,
+    LoadingSpinnerContentModule
   ],
   declarations: [FaqPage]
 })

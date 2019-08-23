@@ -11,59 +11,69 @@
 
 <ion-content padding>
 
-  <ion-list *ngIf="tripService.trip.questions && tripService.trip.questions.length > 0">
+  <ng-container *ngIf="tripService.ready; else loading">
 
-    <ion-item *ngFor="let question of tripService.trip.questions">
+    <ion-list *ngIf="tripService.trip.questions && tripService.trip.questions.length > 0">
 
-      <div class="faq-question-wrapper">
+      <ion-item *ngFor="let question of tripService.trip.questions">
 
-        <div class="faq-question">{{ question.question }}</div>
+        <div class="faq-question-wrapper">
 
-        <ng-container *ngIf="question.answer; else noAnswer">
+          <div class="faq-question">{{ question.question }}</div>
 
-          <div class="faq-answer" [innerHtml]="question.answer | MarkdownToHtml"></div>
+          <ng-container *ngIf="question.answer; else noAnswer">
 
-        </ng-container>
+            <div class="faq-answer" [innerHtml]="question.answer | MarkdownToHtml"></div>
 
-        <ng-template #noAnswer>
+          </ng-container>
 
-          <div class="faq-no-answer">
+          <ng-template #noAnswer>
 
-            {{ ('NO_ANSWER_YET' | translate) +
+            <div class="faq-no-answer">
+
+              {{ ('NO_ANSWER_YET' | translate) +
               ' (' + ('ASKED' | translate) + ' ' +
               ((question.created_at * 1000) | date : 'mediumDate') +
-            ')' }}
+              ')' }}
 
-          </div>
+            </div>
 
-        </ng-template>
+          </ng-template>
 
-      </div>
+        </div>
 
-      <!-- TODO could add fields displaying when the question was asked, answered -->
+        <!-- TODO could add fields displaying when the question was asked, answered -->
 
-    </ion-item>
+      </ion-item>
 
-  </ion-list>
+    </ion-list>
 
-  <div id="faq-ask-new-form-wrapper">
+    <div id="faq-ask-new-form-wrapper">
 
-    <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()" id="question-form">
+      <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()" id="question-form">
 
-      <ion-label>
-        {{ 'SEND_A_NEW_QUESTION' | translate }}
-      </ion-label>
+        <ion-label>
+          {{ 'SEND_A_NEW_QUESTION' | translate }}
+        </ion-label>
 
-      <ion-input type="text" id="faq-question-input" formControlName="question"
-         placeholder="{{ 'WRITE_QUESTION_HERE' | translate }}">
-      </ion-input>
+        <ion-input type="text" id="faq-question-input" formControlName="question"
+                   placeholder="{{ 'WRITE_QUESTION_HERE' | translate }}">
+        </ion-input>
 
-      <ion-button [disabled]="!questionForm.valid">
-        {{ 'SEND' | translate }}
-      </ion-button>
+        <ion-button [disabled]="!questionForm.valid">
+          {{ 'SEND' | translate }}
+        </ion-button>
 
-    </form>
+      </form>
 
-  </div>
+    </div>
+
+  </ng-container>
+
+  <ng-template #loading>
+
+    <app-loading-spinner-content></app-loading-spinner-content>
+
+  </ng-template>
 
 </ion-content>

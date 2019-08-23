@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DocumentsPage } from './documents.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingSpinnerContentModule } from '../../components/loading-spinner-content/loading-spinner-content.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
+    LoadingSpinnerContentModule
   ],
   declarations: [DocumentsPage]
 })

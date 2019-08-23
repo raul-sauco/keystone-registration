@@ -8,6 +8,7 @@ import { UsernameService } from '../services/username/username.service';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
+// noinspection JSAnnotator
 @Injectable({ providedIn: 'root' })
 export class UniqueUsernameValidator implements AsyncValidator {
   constructor(private usernameService: UsernameService) {}

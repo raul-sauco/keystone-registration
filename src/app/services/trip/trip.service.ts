@@ -4,7 +4,8 @@ import { AuthService } from '../auth/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Trip } from '../../models/trip';
 import { HttpHeaders } from '@angular/common/http';
-import {TripPackingListItem} from '../../models/tripPackingListItem';
+import { TripPackingListItem } from '../../models/tripPackingListItem';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import {TripPackingListItem} from '../../models/tripPackingListItem';
 export class TripService {
 
   public trip: Trip;
+  trip$: Subject<Trip> = new Subject<Trip>();
   public ready: boolean;
   public loading: boolean;
   public formattedItinerary: any;

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { GuidesPage } from './guides.page';
 import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingSpinnerContentModule } from '../../components/loading-spinner-content/loading-spinner-content.module';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     MarkdownToHtmlModule,
-    TranslateModule
+    TranslateModule,
+    LoadingSpinnerContentModule
   ],
   declarations: [GuidesPage]
 })
