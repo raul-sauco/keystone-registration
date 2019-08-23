@@ -36,6 +36,7 @@
     "5": "清真食品"
   },
   "EMAIL": "电子邮件",
+  "EMAIL_IS_NOT_VALID": "That is not a valid email address",
   "EMPTY": "空",
   "ENTER_EMAIL_RECOVER_PASSWORD": "Enter the email linked to your account and we will send instructions to reset your password.",
   "ERROR": "错误",
@@ -54,6 +55,7 @@
   "GUARDIAN_NAME": "家长/法定监护人姓名",
   "GUIDES": "教练",
   "HELP": "Help",
+  "HELP_SECURITY_CODES": "<p>Keystone Adventures sends the codes to the school at the same time as we send the link.</p><p>If you didn't receive the codes yet, ask the trip organizer.</p><h2>What do the codes look like?</h2><p>The trip code is all digits, usually 3 in length, something like <em>143</em></p>",
   "HOME": "主页",
   "HOME_CARD_CHALLENGE": "While Keystone Adventures programs are designed to be accessible to participants with no previous experience, they are also intended to be challenging.\n\nParticipants can expect to push themselves physically in order to overcome these challenges. In achieving success, students will gain personal confidence and self-esteem and become open to wider opportunities and life chances.",
   "HOME_CARD_LOCATIONS": "Due to extensive experience and deep relationships within the industry, we are proud to offer programs in more than a dozen domestic provinces, as well as in a handful of countries in greater Asia and the rest of the world.",

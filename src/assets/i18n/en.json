@@ -36,6 +36,7 @@
     "5": "Halal"
   },
   "EMAIL": "Email",
+  "EMAIL_IS_NOT_VALID": "That is not a valid email address",
   "EMPTY": "Empty",
   "ENTER_EMAIL_RECOVER_PASSWORD": "Enter the email linked to your account and we will send instructions to reset your password.",
   "ERROR": "Error",

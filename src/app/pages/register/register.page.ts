@@ -50,7 +50,7 @@ export class RegisterPage implements OnInit {
         asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
         updateOn: 'blur'
       }),
-      email: ['', Validators.minLength(6)], // todo validate emails
+      email: ['', Validators.email],
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(8)
