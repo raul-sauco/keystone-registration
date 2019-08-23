@@ -77,10 +77,9 @@ export class LoginPage implements OnInit {
     this.api.post(this.loginEndpoint, params).subscribe(
       async (response: any) => {
 
-        // Get rid of the loader
-        await loading.dismiss();
-
         if (response.error === true) {
+
+          await loading.dismiss();
 
           const alert = await this.alertCtrl.create({
             header: this.translations.ERROR,
@@ -95,15 +94,22 @@ export class LoginPage implements OnInit {
           const cred = new Credentials(response.credentials);
 
           this.auth.setCredentials(cred).then(
-            () => {
-              this.router.navigateByUrl('/home');
+            async () => {
+              this.router.navigateByUrl('/home').then(
+                async () => {
+                  await loading.dismiss();
+                }
+              );
             }).catch(
-            error => {
+            async error => {
               console.error('Error saving credentials to device: ' + error);
+              await loading.dismiss();
             });
 
         }
       }, async error => {
+
+        await loading.dismiss();
 
         const alert = await this.alertCtrl.create({
           header: this.translations.ERROR,
