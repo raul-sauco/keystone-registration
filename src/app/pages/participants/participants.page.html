@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'PARTICIPANTS' | translate | uppercase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ng-container *ngIf="participants; else loading">
+
+    <ion-list *ngIf="participants.length > 0; else empty">
+
+      <div class="count-header">
+        <span class="student-count" [ngPlural]="totalStudents">
+          <ng-template ngPluralCase="zero">{{ 'NO_STUDENTS' | translate }}</ng-template>
+          <ng-template ngPluralCase="one">{{ 'ONE_STUDENT' | translate }}</ng-template>
+          <ng-template ngPluralCase="other">
+            {{ 'COUNT_STUDENTS' | translate:{count: totalStudents} }}
+          </ng-template>
+        </span> -
+        <span class="student-count" [ngPlural]="totalTeachers">
+          <ng-template ngPluralCase="zero">{{ 'NO_TEACHERS' | translate }}</ng-template>
+          <ng-template ngPluralCase="one">{{ 'ONE_TEACHER' | translate }}</ng-template>
+          <ng-template ngPluralCase="other">
+            {{ 'COUNT_TEACHERS' | translate:{count: totalTeachers} }}
+          </ng-template>
+        </span>
+      </div>
+
+      <ion-list-header>
+        <div class="participant-row-wrapper ">
+          <div class="participant-row-name">
+            <span class="participant-list-index">#</span>
+            <span class="participant-name"> {{ 'NAME' | translate }}</span>
+          </div>
+          <div class="participant-row-gender">{{ 'GENDER' | translate }}</div>
+          <div class="participant-row-dob">{{ 'DOB' | translate }}</div>
+          <div class="participant-travel-document">{{ 'TRAVEL_DOCUMENT_NUMBER' | translate }}</div>
+          <div class="participant-row-citizenship">{{ 'CITIZENSHIP' | translate }}</div>
+          <div class="participant-row-waiver-signed">{{ 'WAIVER_ACCEPTED' | translate }}</div>
+          <div class="participant-row-waiver-signed-on">{{ 'WAIVER_SIGNED_ON' | translate }}</div>
+        </div>
+      </ion-list-header>
+
+      <ng-container *ngFor="let participant of participants; index as i">
+        <app-participant [participant]="participant" [index]="i"></app-participant>
+      </ng-container>
+
+    </ion-list>
+
+  </ng-container>
+
+  <ng-template #empty>
+    {{ 'NO_REGISTRATIONS_YET' | translate }}
+  </ng-template>
+
+  <ng-template #loading>
+
+    <app-loading-spinner-content></app-loading-spinner-content>
+
+  </ng-template>
+
+</ion-content>

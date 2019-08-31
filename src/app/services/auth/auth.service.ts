@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Credentials} from '../../models/credentials';
 import {Storage} from '@ionic/storage';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
   private credentials: Credentials = null;
 
   public authenticated = false;
+  auth$: Subject<boolean> = new Subject<boolean>();
   public redirectUrl: string;
 
   constructor(private storage: Storage) {
@@ -21,6 +23,7 @@ export class AuthService {
   setCredentials(cred: Credentials) {
     this.credentials = cred;
     this.authenticated = true;
+    this.auth$.next(this.authenticated);
     return this.saveCredentials();
   }
 
@@ -34,7 +37,7 @@ export class AuthService {
     return this.storage.set(this.CREDENTIALS_STORAGE_KEY, this.credentials);
   }
 
-  /** Checks wether the application has a user currently authenticated */
+  /** Checks whether the application has a user currently authenticated */
   checkAuthenticated(): Promise<boolean> {
 
     return new Promise<boolean>(
@@ -42,6 +45,7 @@ export class AuthService {
 
         if (this.credentials !== null && this.credentials.accessToken !== null) {
           this.authenticated = true;
+          this.auth$.next(this.authenticated);
           resolve(true);
         } else {
 
@@ -50,6 +54,7 @@ export class AuthService {
               if (credentials) {
                 this.credentials = credentials;
                 this.authenticated = true;
+                this.auth$.next(this.authenticated);
                 resolve(true);
               } else {
                 resolve(false);

@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class Student {
   id: number;
+  type: number; // 1 for teacher, 0 for student
   firstName: string;
   lastName: string;
   citizenship: string;
@@ -66,6 +67,7 @@ export class Student {
 
     // Use the id attribute for creation scenarios
     this.id = json.id;
+    this.type = json.type;
     this.firstName = json.first_name;
     this.lastName = json.last_name;
     this.citizenship = json.citizenship;
@@ -73,7 +75,7 @@ export class Student {
     this.gender = json.gender;
     this.dob = json.dob;
     this.guardianName = json.guardian_name;
-    this.waiverAccepted = json.waiver_accepted === 1 ? true : json.waiver_accepted === 0 ? false : null;
+    this.waiverAccepted = json.waiver_accepted ? true : json.waiver_accepted === 0 ? false : null;
     this.waiverSignedOn = json.waiver_signed_on;
     this.dietaryRequirements = json.dietary_requirements;
     this.dietaryRequirementsOther = json.dietary_requirements_other;

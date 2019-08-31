@@ -1,0 +1,10 @@
+/* Import styles for the participant-row-wrapper class grid */
+@import "../../components/participant/participant.component";
+
+ion-list-header {
+  padding-left: 0;
+  --background: var(--ion-color-light-shade);
+  span.participant-list-index {
+    color: var(--ion-color-light-contrast);
+  }
+}

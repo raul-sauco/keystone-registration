@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
+import { TeacherGuard } from './guards/teacher.guard';
 
 const routes: Routes = [
   {
@@ -90,6 +91,11 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule',
     canActivate: [NoAuthGuard]
+  },
+  {
+    path: 'participants',
+    loadChildren: './pages/participants/participants.module#ParticipantsPageModule',
+    canActivate: [TeacherGuard]
   }
 ];
 

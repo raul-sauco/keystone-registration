@@ -1,0 +1,26 @@
+<ion-item [ngClass]="+participant.type === 1 ? 'participant-row-teacher' : ''">
+
+  <div class="participant-row-wrapper">
+
+    <div class="participant-row-name">
+      <span class="participant-list-index">{{ index + 1 }}</span>
+      <span class="participant-name">
+        {{ participant.lastName }}, {{ participant.firstName }}
+      </span>
+    </div>
+
+    <div>{{ participant.getAttributeText('gender') }}</div>
+
+    <div>{{ participant.getAttributeText('dob') }}</div>
+
+    <div>{{ participant.travelDocument }}</div>
+
+    <div>{{ participant.citizenship }}</div>
+
+    <div>{{ participant.getAttributeText('waiverAccepted') }}</div>
+
+    <div>{{ participant.getAttributeText('waiverSignedOn') }}</div>
+
+  </div>
+
+</ion-item>

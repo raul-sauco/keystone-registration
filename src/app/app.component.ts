@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,7 +12,9 @@ import { AuthService } from './services/auth/auth.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+
+  auth$;
 
   public appPages = [
     {title: 'HOME', url: '/home', icon: 'home'},
@@ -49,6 +51,22 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.auth$ = this.auth.auth$.subscribe(
+      val => {
+        if (val) {
+          if (this.auth.getCredentials().type === 4) {
+
+            if (!this.appPages.find(e => {
+              return e.title === 'PARTICIPANTS';
+            })) {
+              this.appPages.push(
+                {title: 'PARTICIPANTS', url: '/participants', icon: 'people'}
+              );
+            }
+          }
+        }
+      }
+    );
   }
 
   initTranslate() {
@@ -82,5 +100,9 @@ export class AppComponent {
     this.auth.logout().then(res => {
       this.router.navigateByUrl('login');
     });
+  }
+
+  ngOnDestroy(): void {
+    this.auth$.unsubscribe();
   }
 }

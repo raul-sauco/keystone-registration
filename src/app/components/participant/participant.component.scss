@@ -1,0 +1,77 @@
+.participant-row-wrapper {
+  margin: 0.7rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(8, auto);
+  grid-column-gap: 10px;
+  grid-row-gap: 0.5rem;
+}
+
+.participant-row-teacher {
+  --background: var(--ion-color-light);
+}
+
+ion-item {
+  --inner-padding-start: 0;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-end: 0;
+}
+
+span.participant-list-index {
+  color: var(--ion-color-medium);
+  font-style: italic;
+  margin-right: 0.5rem;
+}
+
+span.participant-name {
+  font-weight: bold;
+}
+
+@media (min-width: 480px) {
+  .participant-row-wrapper {
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, auto);
+    .participant-row-name {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+}
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .participant-row-wrapper {
+    grid-template-columns: repeat(3, 33.3333%);
+    grid-template-rows: repeat(3, auto);
+    .participant-row-name {
+      grid-column: 1 / 4;
+      grid-row: 1 / 2;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .participant-row-wrapper {
+    grid-template-columns: auto 10% 15% 15% 15% 10% 12%;
+    grid-template-rows: auto;
+    .participant-row-name {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+  }
+}
