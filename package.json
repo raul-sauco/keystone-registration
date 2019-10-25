@@ -29,8 +29,10 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
     "markdown-to-html-pipe": "^1.2.5",
+    "ng2-charts": "^2.3.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
